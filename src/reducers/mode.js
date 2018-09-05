@@ -1,7 +1,7 @@
-import * as constants from '~/constants';
+import * as constants from "~/constants";
 
 const initialState = {
-  mode: 'view',
+  mode: "viewing"
 };
 
 const reducer = (state = initialState, { type, payload }) => {
@@ -9,7 +9,7 @@ const reducer = (state = initialState, { type, payload }) => {
     case constants.CHANGE_EDITOR_MODE:
       return {
         ...state,
-        mode: payload,
+        mode: payload
       };
     default:
       return state;

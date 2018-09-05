@@ -1,8 +1,8 @@
-import { combineReducers } from 'redux';
-import mode from './mode';
+import { combineReducers } from "redux";
+import mode from "./mode";
 
 const reducers = {
-  mode,
+  mode
 };
 
 export default combineReducers(reducers);
