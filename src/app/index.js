@@ -1,8 +1,9 @@
 import React from "react";
+import Sidebar from "./Sidebar";
 
 const App = () => (
   <div>
-    <h1>TEMP</h1>
+    <Sidebar />
   </div>
 );
 

@@ -1,7 +1,7 @@
 import * as constants from "~/constants";
 
 const initialState = {
-  mode: "viewing"
+  mode: "adding"
 };
 
 const reducer = (state = initialState, { type, payload }) => {
