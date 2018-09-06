@@ -1,10 +1,24 @@
 import React from "react";
-import Sidebar from "./Sidebar";
+import { connect } from "react-redux";
+import { withStyles } from "@material-ui/core/styles";
+import Content from "./Content";
 
-const App = () => (
-  <div>
-    <Sidebar />
+const styles = () => ({
+  root: {
+    width: "100%",
+    height: "100%",
+    display: "flex"
+  }
+});
+
+const App = ({ content, classes: { root } }) => (
+  <div className={root}>
+    <Content content={content} />
   </div>
 );
 
-export default App;
+const mapStateToProps = state => ({
+  content: state.content.content
+});
+
+export default connect(mapStateToProps)(withStyles(styles)(App));
