@@ -8,7 +8,7 @@ import AddButton from "./AddButton";
 
 const styles = () => ({
   dashedBorder: {
-    outline: "2px dashed rgba(204, 204, 204, 1)"
+    border: "2px dashed rgba(204, 204, 204, 1)"
   },
   hiddenBlock: {
     display: "flex",
@@ -38,14 +38,15 @@ class GridComponent extends React.Component {
       isFirstChild,
       isLastChild,
       children,
-      removeItem,
       mode,
+      removeItem,
+      copyItem,
       changeItem,
       classes: { dashedBorder, hiddenBlock },
       ...props
     } = this.props;
     const { isHovered } = this.state;
-    const isItemhidden = Boolean(props.hidden);
+    const isItemHidden = Boolean(props.hidden);
     return (
       <View
         {...props}
@@ -53,7 +54,7 @@ class GridComponent extends React.Component {
         onMouseLeave={this.onMouseLeave}
         className={classNames(isHovered && dashedBorder)}
       >
-        {isItemhidden ? (
+        {isItemHidden ? (
           <Typography className={hiddenBlock} align="center" variant="title">
             Блок скрыт
           </Typography>
@@ -65,8 +66,9 @@ class GridComponent extends React.Component {
             <GridActionsToolbar
               id={props.id}
               removeItem={removeItem}
-              isItemhidden={isItemhidden}
+              isItemHidden={isItemHidden}
               changeItem={changeItem}
+              copyItem={copyItem}
               display={isHovered}
             />
             <AddButton display={isHovered} />

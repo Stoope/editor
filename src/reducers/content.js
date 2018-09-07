@@ -1,3 +1,4 @@
+import nanoid from "nanoid";
 import * as constants from "~/constants";
 
 const initialState = {
@@ -47,6 +48,12 @@ const initialState = {
   ]
 };
 
+const insertInArray = (index, item, array) => {
+  const newArray = [...array];
+  newArray.splice(index, 0, item);
+  return newArray;
+};
+
 const removeItemById = (id, content) => {
   if (content.id === id) {
     return undefined;
@@ -83,6 +90,41 @@ const changeItemById = (props, content) => {
   return content;
 };
 
+const copyItemById = (id, content) => {
+  if (Array.isArray(content)) {
+    const item = content.find(element => element.id === id);
+    if (item) {
+      const index = content.findIndex(element => element.id === id);
+      return insertInArray(index, { ...item, id: nanoid() }, content).map(
+        element => copyItemById(id, element)
+      );
+    }
+    return content.map(element => copyItemById(id, element));
+  }
+  if (Array.isArray(content.content)) {
+    const item = content.content.find(element => element.id === id);
+    if (item) {
+      const index = content.content.findIndex(element => element.id === id);
+      return {
+        ...content,
+        content: insertInArray(
+          index,
+          { ...item, id: nanoid() },
+          content.content
+        ).map(element => copyItemById(id, element))
+      };
+    }
+    return {
+      ...content,
+      content: content.content.map(element => copyItemById(id, element))
+    };
+  }
+  if (content.id === id) {
+    return [content, { ...content, id: nanoid() }];
+  }
+  return content;
+};
+
 const reducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case constants.REMOVE_EDITOR_CONTENT_ITEM:
@@ -94,6 +136,11 @@ const reducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         content: changeItemById(payload, state.content)
+      };
+    case constants.COPY_EDITOR_CONTENT_ITEM:
+      return {
+        ...state,
+        content: copyItemById(payload, state.content)
       };
     default:
       return state;

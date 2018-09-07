@@ -30,8 +30,9 @@
     "classnames": "^2.2.6",
     "eslint-config-prettier": "^3.0.1",
     "eslint-plugin-prettier": "^2.6.2",
-    "react": "^16.4.2",
-    "react-dom": "^16.4.2",
+    "nanoid": "^1.2.3",
+    "react": "^16.5.0",
+    "react-dom": "^16.5.0",
     "react-redux": "^5.0.7",
     "redux": "^4.0.0",
     "typeface-roboto": "^0.0.54"

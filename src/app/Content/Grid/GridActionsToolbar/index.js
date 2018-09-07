@@ -4,7 +4,9 @@ import Button from "@material-ui/core/Button";
 import Delete from "@material-ui/icons/Delete";
 import RemoveRedEyeOutlined from "@material-ui/icons/RemoveRedEyeOutlined";
 import RemoveRedEye from "@material-ui/icons/RemoveRedEye";
+import FileCopy from "@material-ui/icons/FileCopy";
 import Zoom from "@material-ui/core/Zoom";
+import Tooltip from "@material-ui/core/Tooltip";
 
 const styles = () => ({
   root: {
@@ -31,6 +33,12 @@ class GridActionsToolbar extends React.Component {
       removeItem(id);
     }
   };
+  copyItem = () => {
+    const { copyItem, id } = this.props;
+    if (copyItem != null) {
+      copyItem(id);
+    }
+  };
   hideItem = () => {
     const { changeItem, id } = this.props;
     if (changeItem != null) {
@@ -47,31 +55,48 @@ class GridActionsToolbar extends React.Component {
     const {
       classes: { root, actionButton, iconSmall },
       display,
-      isItemhidden
+      isItemHidden
     } = this.props;
     return (
       <Zoom in={display}>
         <div className={root}>
-          <Button
-            onClick={this.removeItem}
-            size="small"
-            variant="contained"
-            className={actionButton}
+          <Tooltip enterDelay={300} title="Копировать блок">
+            <Button
+              onClick={this.copyItem}
+              size="small"
+              variant="contained"
+              className={actionButton}
+            >
+              <FileCopy className={iconSmall} />
+            </Button>
+          </Tooltip>
+          <Tooltip enterDelay={300} title="Удалить блок">
+            <Button
+              onClick={this.removeItem}
+              size="small"
+              variant="contained"
+              className={actionButton}
+            >
+              <Delete className={iconSmall} />
+            </Button>
+          </Tooltip>
+          <Tooltip
+            enterDelay={300}
+            title={isItemHidden ? "Показать блок" : "Скрыть блок"}
           >
-            <Delete className={iconSmall} />
-          </Button>
-          <Button
-            onClick={isItemhidden ? this.showItem : this.hideItem}
-            size="small"
-            variant="contained"
-            className={actionButton}
-          >
-            {isItemhidden ? (
-              <RemoveRedEye className={iconSmall} />
-            ) : (
-              <RemoveRedEyeOutlined className={iconSmall} />
-            )}
-          </Button>
+            <Button
+              onClick={isItemHidden ? this.showItem : this.hideItem}
+              size="small"
+              variant="contained"
+              className={actionButton}
+            >
+              {isItemHidden ? (
+                <RemoveRedEyeOutlined className={iconSmall} />
+              ) : (
+                <RemoveRedEye className={iconSmall} />
+              )}
+            </Button>
+          </Tooltip>
         </div>
       </Zoom>
     );

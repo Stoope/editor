@@ -4,7 +4,8 @@ import { withStyles } from "@material-ui/core/styles";
 import Content from "./Content";
 import {
   REMOVE_EDITOR_CONTENT_ITEM,
-  CHANGE_EDITOR_CONTENT_ITEM
+  CHANGE_EDITOR_CONTENT_ITEM,
+  COPY_EDITOR_CONTENT_ITEM
 } from "~/actions";
 
 const styles = () => ({
@@ -30,6 +31,7 @@ export default connect(
   mapStateToProps,
   {
     removeItem: REMOVE_EDITOR_CONTENT_ITEM,
-    changeItem: CHANGE_EDITOR_CONTENT_ITEM
+    changeItem: CHANGE_EDITOR_CONTENT_ITEM,
+    copyItem: COPY_EDITOR_CONTENT_ITEM
   }
 )(withStyles(styles)(App));

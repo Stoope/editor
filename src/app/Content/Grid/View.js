@@ -6,8 +6,9 @@ import classNames from "classnames";
 const styles = () => ({
   container: {
     minHeight: 34 + 15 * 2,
-    transition: "outline-backcolorground 0.2s ease-out",
-    outline: "2px dashed rgba(204, 204, 204, 0)"
+    transition: "all 0.2s ease-out",
+    margin: -2,
+    border: "2px dashed rgba(204, 204, 204, 0)"
   },
   grid: {
     position: "relative"
@@ -22,8 +23,8 @@ const GridComponent = ({
   ...props
 }) => (
   <Grid
-    className={classNames(grid, className)}
-    classes={{ container }}
+    className={grid}
+    classes={{ container: classNames(container, className) }}
     {...props}
   >
     {children}

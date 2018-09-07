@@ -8,3 +8,7 @@ export const CHANGE_EDITOR_CONTENT_ITEM = payload => ({
   type: constants.CHANGE_EDITOR_CONTENT_ITEM,
   payload
 });
+export const COPY_EDITOR_CONTENT_ITEM = payload => ({
+  type: constants.COPY_EDITOR_CONTENT_ITEM,
+  payload
+});
