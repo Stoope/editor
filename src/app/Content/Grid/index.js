@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import classNames from "classnames";
+import Typography from "@material-ui/core/Typography";
 import View from "./View";
 import GridActionsToolbar from "./GridActionsToolbar";
 import AddButton from "./AddButton";
@@ -8,6 +9,13 @@ import AddButton from "./AddButton";
 const styles = () => ({
   dashedBorder: {
     outline: "2px dashed rgba(204, 204, 204, 1)"
+  },
+  hiddenBlock: {
+    display: "flex",
+    alignSelf: "stretch",
+    flexGrow: 1,
+    justifyContent: "center",
+    alignItems: "center"
   }
 });
 
@@ -32,10 +40,12 @@ class GridComponent extends React.Component {
       children,
       removeItem,
       mode,
-      classes: { dashedBorder },
+      changeItem,
+      classes: { dashedBorder, hiddenBlock },
       ...props
     } = this.props;
     const { isHovered } = this.state;
+    const isItemhidden = Boolean(props.hidden);
     return (
       <View
         {...props}
@@ -43,12 +53,20 @@ class GridComponent extends React.Component {
         onMouseLeave={this.onMouseLeave}
         className={classNames(isHovered && dashedBorder)}
       >
-        {children}
+        {isItemhidden ? (
+          <Typography className={hiddenBlock} align="center" variant="title">
+            Блок скрыт
+          </Typography>
+        ) : (
+          children
+        )}
         {mode === "edditing" && (
           <Fragment>
             <GridActionsToolbar
               id={props.id}
               removeItem={removeItem}
+              isItemhidden={isItemhidden}
+              changeItem={changeItem}
               display={isHovered}
             />
             <AddButton display={isHovered} />

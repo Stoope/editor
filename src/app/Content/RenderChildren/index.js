@@ -34,16 +34,15 @@ const renderComponent = (component, props) => {
   );
 };
 
-const RenderChildren = ({ content, mode, removeItem }) =>
+const RenderChildren = ({ content, ...props }) =>
   Array.isArray(content)
     ? content.map((component, index, array) =>
         renderComponent(component, {
           isFirstChild: index === 0,
           isLastChild: index === array.length - 1,
-          mode,
-          removeItem
+          ...props
         })
       )
-    : renderComponent(content);
+    : renderComponent(content, props);
 
 export default RenderChildren;

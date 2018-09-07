@@ -5,7 +5,7 @@ import classNames from "classnames";
 
 const styles = () => ({
   container: {
-    minHeight: 100,
+    minHeight: 34 + 15 * 2,
     transition: "outline-backcolorground 0.2s ease-out",
     outline: "2px dashed rgba(204, 204, 204, 0)"
   },

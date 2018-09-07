@@ -2,6 +2,8 @@ import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Delete from "@material-ui/icons/Delete";
+import RemoveRedEyeOutlined from "@material-ui/icons/RemoveRedEyeOutlined";
+import RemoveRedEye from "@material-ui/icons/RemoveRedEye";
 import Zoom from "@material-ui/core/Zoom";
 
 const styles = () => ({
@@ -25,12 +27,27 @@ const styles = () => ({
 class GridActionsToolbar extends React.Component {
   removeItem = () => {
     const { removeItem, id } = this.props;
-    removeItem(id);
+    if (removeItem != null) {
+      removeItem(id);
+    }
+  };
+  hideItem = () => {
+    const { changeItem, id } = this.props;
+    if (changeItem != null) {
+      changeItem({ id, hidden: true });
+    }
+  };
+  showItem = () => {
+    const { changeItem, id } = this.props;
+    if (changeItem != null) {
+      changeItem({ id, hidden: false });
+    }
   };
   render() {
     const {
       classes: { root, actionButton, iconSmall },
-      display
+      display,
+      isItemhidden
     } = this.props;
     return (
       <Zoom in={display}>
@@ -43,11 +60,17 @@ class GridActionsToolbar extends React.Component {
           >
             <Delete className={iconSmall} />
           </Button>
-          <Button size="small" variant="contained" className={actionButton}>
-            <Delete className={iconSmall} />
-          </Button>
-          <Button size="small" variant="contained" className={actionButton}>
-            <Delete className={iconSmall} />
+          <Button
+            onClick={isItemhidden ? this.showItem : this.hideItem}
+            size="small"
+            variant="contained"
+            className={actionButton}
+          >
+            {isItemhidden ? (
+              <RemoveRedEye className={iconSmall} />
+            ) : (
+              <RemoveRedEyeOutlined className={iconSmall} />
+            )}
           </Button>
         </div>
       </Zoom>

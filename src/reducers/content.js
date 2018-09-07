@@ -47,24 +47,40 @@ const initialState = {
   ]
 };
 
-const removeItemById = (id, item) => {
-  if (item.id === id) {
+const removeItemById = (id, content) => {
+  if (content.id === id) {
     return undefined;
   }
-  if (Array.isArray(item)) {
-    return item
+  if (Array.isArray(content)) {
+    return content
       .map(element => removeItemById(id, element))
       .filter(element => element != null);
   }
-  if (Array.isArray(item.content)) {
+  if (Array.isArray(content.content)) {
     return {
-      ...item,
-      content: item.content
+      ...content,
+      content: content.content
         .map(element => removeItemById(id, element))
         .filter(element => element != null)
     };
   }
-  return item;
+  return content;
+};
+
+const changeItemById = (props, content) => {
+  if (content.id === props.id) {
+    return { ...content, ...props };
+  }
+  if (Array.isArray(content)) {
+    return content.map(element => changeItemById(props, element));
+  }
+  if (Array.isArray(content.content)) {
+    return {
+      ...content,
+      content: content.content.map(element => changeItemById(props, element))
+    };
+  }
+  return content;
 };
 
 const reducer = (state = initialState, { type, payload }) => {
@@ -73,6 +89,11 @@ const reducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         content: removeItemById(payload, state.content)
+      };
+    case constants.CHANGE_EDITOR_CONTENT_ITEM:
+      return {
+        ...state,
+        content: changeItemById(payload, state.content)
       };
     default:
       return state;
