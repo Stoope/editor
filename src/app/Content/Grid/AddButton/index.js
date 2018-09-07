@@ -24,7 +24,7 @@ class GridActionsToolbar extends React.Component {
       display
     } = this.props;
     return (
-      <Tooltip title="Добавить блок">
+      <Tooltip enterDelay={300} title="Добавить блок">
         <Zoom in={display}>
           <Button
             variant="fab"
