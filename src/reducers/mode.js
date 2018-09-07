@@ -1,19 +1,7 @@
 import * as constants from "~/constants";
 
 const initialState = {
-  content: [
-    {
-      type: "Grid",
-      container: true,
-      children: [
-        {
-          type: "Grid",
-          xs: 12,
-          children: ["content"]
-        }
-      ]
-    }
-  ]
+  mode: "edditing"
 };
 
 const reducer = (state = initialState, { type, payload }) => {

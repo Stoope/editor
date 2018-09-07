@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import Grid from "../Grid";
 
-const renderComponent = component => {
+const renderComponent = (component, props) => {
   if (component === null) {
     return null;
   }
@@ -25,15 +25,21 @@ const renderComponent = component => {
       break;
   }
   return (
-    <Component {...component}>
+    <Component {...component} {...props}>
       <RenderChildren content={component.content} />
     </Component>
   );
 };
 
-const RenderChildren = ({ content }) =>
+const RenderChildren = ({ content, mode }) =>
   Array.isArray(content)
-    ? content.map(component => renderComponent(component))
+    ? content.map((component, index, array) =>
+        renderComponent(component, {
+          isFirstChild: index === 0,
+          isLastChild: index === array.length - 1,
+          mode
+        })
+      )
     : renderComponent(content);
 
 export default RenderChildren;

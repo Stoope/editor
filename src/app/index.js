@@ -11,14 +11,15 @@ const styles = () => ({
   }
 });
 
-const App = ({ content, classes: { root } }) => (
+const App = ({ content, mode, classes: { root } }) => (
   <div className={root}>
-    <Content content={content} />
+    <Content content={content} mode={mode} />
   </div>
 );
 
 const mapStateToProps = state => ({
-  content: state.content.content
+  content: state.content.content,
+  mode: state.mode.mode
 });
 
 export default connect(mapStateToProps)(withStyles(styles)(App));
