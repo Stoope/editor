@@ -1,59 +1,78 @@
 import * as constants from "~/constants";
 
 const initialState = {
-  mode: "edditing",
   content: [
     {
-      key: 1,
+      id: 1,
       type: "Grid",
       container: true,
       content: [
         {
-          key: 2,
+          id: 4,
           item: true,
           type: "Grid",
           xs: 12,
-          content: "content"
+          content: "content1"
         }
       ]
     },
     {
-      key: 2,
+      id: 2,
       type: "Grid",
       container: true,
       content: [
         {
-          key: 2,
+          id: 5,
           item: true,
           type: "Grid",
           xs: 12,
-          content: "content"
+          content: "content2"
         }
       ]
     },
     {
-      key: 3,
+      id: 3,
       type: "Grid",
       container: true,
       content: [
         {
-          key: 2,
+          id: 6,
           item: true,
           type: "Grid",
           xs: 12,
-          content: "content"
+          content: "content3"
         }
       ]
     }
   ]
 };
 
+const removeItemById = (id, item) => {
+  if (item.id === id) {
+    return undefined;
+  }
+  if (Array.isArray(item)) {
+    return item
+      .map(element => removeItemById(id, element))
+      .filter(element => element != null);
+  }
+  if (Array.isArray(item.content)) {
+    return {
+      ...item,
+      content: item.content
+        .map(element => removeItemById(id, element))
+        .filter(element => element != null)
+    };
+  }
+  return item;
+};
+
 const reducer = (state = initialState, { type, payload }) => {
   switch (type) {
-    case constants.CHANGE_EDITOR_MODE:
+    case constants.REMOVE_EDITOR_CONTENT_ITEM:
       return {
         ...state,
-        mode: payload
+        content: removeItemById(payload, state.content)
       };
     default:
       return state;

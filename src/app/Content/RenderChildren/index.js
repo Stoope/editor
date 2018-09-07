@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import Grid from "../Grid";
 
 const renderComponent = (component, props) => {
@@ -21,23 +21,27 @@ const renderComponent = (component, props) => {
       Component = Grid;
       break;
     default:
-      Component = Fragment;
+      Component = null;
       break;
   }
+  if (Component === null) {
+    return null;
+  }
   return (
-    <Component {...component} {...props}>
+    <Component {...component} {...props} key={component.id}>
       <RenderChildren content={component.content} />
     </Component>
   );
 };
 
-const RenderChildren = ({ content, mode }) =>
+const RenderChildren = ({ content, mode, removeItem }) =>
   Array.isArray(content)
     ? content.map((component, index, array) =>
         renderComponent(component, {
           isFirstChild: index === 0,
           isLastChild: index === array.length - 1,
-          mode
+          mode,
+          removeItem
         })
       )
     : renderComponent(content);

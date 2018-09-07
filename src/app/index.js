@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { withStyles } from "@material-ui/core/styles";
 import Content from "./Content";
+import { REMOVE_EDITOR_CONTENT_ITEM } from "~/actions";
 
 const styles = () => ({
   root: {
@@ -11,9 +12,9 @@ const styles = () => ({
   }
 });
 
-const App = ({ content, mode, classes: { root } }) => (
+const App = ({ content, removeItem, mode, classes: { root } }) => (
   <div className={root}>
-    <Content content={content} mode={mode} />
+    <Content removeItem={removeItem} content={content} mode={mode} />
   </div>
 );
 
@@ -22,4 +23,7 @@ const mapStateToProps = state => ({
   mode: state.mode.mode
 });
 
-export default connect(mapStateToProps)(withStyles(styles)(App));
+export default connect(
+  mapStateToProps,
+  { removeItem: REMOVE_EDITOR_CONTENT_ITEM }
+)(withStyles(styles)(App));

@@ -8,9 +8,9 @@ const styles = () => ({
   }
 });
 
-const Content = ({ content, mode, classes: { root } }) => (
+const Content = ({ content, removeItem, mode, classes: { root } }) => (
   <div className={root}>
-    <RenderChildren content={content} mode={mode} />
+    <RenderChildren removeItem={removeItem} content={content} mode={mode} />
   </div>
 );
 
