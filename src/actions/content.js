@@ -12,3 +12,11 @@ export const COPY_EDITOR_CONTENT_ITEM = payload => ({
   type: constants.COPY_EDITOR_CONTENT_ITEM,
   payload
 });
+export const MOVE_EDITOR_CONTENT_ITEM_UP = payload => ({
+  type: constants.MOVE_EDITOR_CONTENT_ITEM_UP,
+  payload
+});
+export const MOVE_EDITOR_CONTENT_ITEM_DOWN = payload => ({
+  type: constants.MOVE_EDITOR_CONTENT_ITEM_DOWN,
+  payload
+});

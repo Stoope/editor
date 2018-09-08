@@ -14,8 +14,7 @@ const styles = () => ({
     border: "2px dashed rgba(204, 204, 204, 0)"
   },
   grid: {
-    transition: "all 0.2s ease-out",
-    margin: "-2px 0px"
+    transition: "all 0.2s ease-out"
   },
   hiddenBlock: {
     display: "flex",
@@ -49,6 +48,8 @@ class GridComponent extends React.Component {
       removeItem,
       copyItem,
       changeItem,
+      moveItemUp,
+      moveItemDown,
       classes: { dashedBorder, hiddenBlock, grid, dashedBorderHidden },
       ...props
     } = this.props;
@@ -82,6 +83,8 @@ class GridComponent extends React.Component {
               display={isHovered}
               isFirstChild={isFirstChild}
               isLastChild={isLastChild}
+              moveItemUp={moveItemUp}
+              moveItemDown={moveItemDown}
             />
             <AddButton display={isHovered} />
           </Fragment>

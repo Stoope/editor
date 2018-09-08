@@ -5,7 +5,9 @@ import Content from "./Content";
 import {
   REMOVE_EDITOR_CONTENT_ITEM,
   CHANGE_EDITOR_CONTENT_ITEM,
-  COPY_EDITOR_CONTENT_ITEM
+  COPY_EDITOR_CONTENT_ITEM,
+  MOVE_EDITOR_CONTENT_ITEM_UP,
+  MOVE_EDITOR_CONTENT_ITEM_DOWN
 } from "~/actions";
 
 const styles = () => ({
@@ -32,6 +34,8 @@ export default connect(
   {
     removeItem: REMOVE_EDITOR_CONTENT_ITEM,
     changeItem: CHANGE_EDITOR_CONTENT_ITEM,
-    copyItem: COPY_EDITOR_CONTENT_ITEM
+    copyItem: COPY_EDITOR_CONTENT_ITEM,
+    moveItemUp: MOVE_EDITOR_CONTENT_ITEM_UP,
+    moveItemDown: MOVE_EDITOR_CONTENT_ITEM_DOWN
   }
 )(withStyles(styles)(App));

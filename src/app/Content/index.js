@@ -1,5 +1,6 @@
 import React from "react";
 import { withStyles } from "@material-ui/core/styles";
+import Grid from "@material-ui/core/Grid";
 import RenderChildren from "./RenderChildren";
 
 const styles = () => ({
@@ -9,9 +10,9 @@ const styles = () => ({
 });
 
 const Content = ({ classes: { root }, ...props }) => (
-  <div className={root}>
+  <Grid container className={root}>
     <RenderChildren {...props} />
-  </div>
+  </Grid>
 );
 
 export default withStyles(styles)(Content);

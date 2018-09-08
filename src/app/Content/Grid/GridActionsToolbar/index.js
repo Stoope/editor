@@ -7,6 +7,7 @@ import RemoveRedEye from "@material-ui/icons/RemoveRedEye";
 import FileCopy from "@material-ui/icons/FileCopy";
 import ArrowDownward from "@material-ui/icons/ArrowDownward";
 import ArrowUpward from "@material-ui/icons/ArrowUpward";
+import Settings from "@material-ui/icons/Settings";
 import Zoom from "@material-ui/core/Zoom";
 import classnames from "classnames";
 import Tooltip from "../Tooltip";
@@ -71,6 +72,18 @@ class GridActionsToolbar extends React.Component {
       changeItem({ id, hidden: false });
     }
   };
+  moveItemUp = () => {
+    const { moveItemUp, id } = this.props;
+    if (moveItemUp != null) {
+      moveItemUp(id);
+    }
+  };
+  moveItemDown = () => {
+    const { moveItemDown, id } = this.props;
+    if (moveItemDown != null) {
+      moveItemDown(id);
+    }
+  };
   render() {
     const {
       classes: {
@@ -105,6 +118,16 @@ class GridActionsToolbar extends React.Component {
               <FileCopy className={iconSmall} />
             </Button>
           </Tooltip>
+          <Tooltip title="Настроить блок">
+            <Button
+              // onClick={this.removeItem}
+              size="small"
+              variant="contained"
+              className={classnames(actionButton, actionButtonMiddle)}
+            >
+              <Settings className={iconSmall} />
+            </Button>
+          </Tooltip>
           <Tooltip title="Удалить блок">
             <Button
               onClick={this.removeItem}
@@ -136,7 +159,7 @@ class GridActionsToolbar extends React.Component {
           {!isFirstChild && (
             <Tooltip title="Переместить блок вверх">
               <Button
-                onClick={this.copyItem}
+                onClick={this.moveItemUp}
                 size="small"
                 variant="contained"
                 className={classnames(
@@ -152,7 +175,7 @@ class GridActionsToolbar extends React.Component {
           {!isLastChild && (
             <Tooltip title="Переместить блок вниз">
               <Button
-                onClick={this.copyItem}
+                onClick={this.moveItemDown}
                 size="small"
                 variant="contained"
                 className={classnames(
