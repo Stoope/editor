@@ -6,44 +6,23 @@ const initialState = {
     {
       id: 1,
       type: "Grid",
-      container: true,
-      content: [
-        {
-          id: 4,
-          item: true,
-          type: "Grid",
-          xs: 12,
-          content: "content1"
-        }
-      ]
+      item: true,
+      xs: 12,
+      content: "content1"
     },
     {
       id: 2,
       type: "Grid",
-      container: true,
-      content: [
-        {
-          id: 5,
-          item: true,
-          type: "Grid",
-          xs: 12,
-          content: "content2"
-        }
-      ]
+      item: true,
+      xs: 12,
+      content: "content2"
     },
     {
       id: 3,
       type: "Grid",
-      container: true,
-      content: [
-        {
-          id: 6,
-          item: true,
-          type: "Grid",
-          xs: 12,
-          content: "content3"
-        }
-      ]
+      xs: 12,
+      item: true,
+      content: "content3"
     }
   ]
 };

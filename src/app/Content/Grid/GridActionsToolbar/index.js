@@ -5,7 +5,10 @@ import Delete from "@material-ui/icons/Delete";
 import RemoveRedEyeOutlined from "@material-ui/icons/RemoveRedEyeOutlined";
 import RemoveRedEye from "@material-ui/icons/RemoveRedEye";
 import FileCopy from "@material-ui/icons/FileCopy";
+import ArrowDownward from "@material-ui/icons/ArrowDownward";
+import ArrowUpward from "@material-ui/icons/ArrowUpward";
 import Zoom from "@material-ui/core/Zoom";
+import classnames from "classnames";
 import Tooltip from "../Tooltip";
 
 const styles = () => ({
@@ -21,8 +24,25 @@ const styles = () => ({
     fontSize: 20
   },
   actionButton: {
-    borderRadius: 0,
     minWidth: 44
+  },
+  actionButtonLast: {
+    borderTopLeftRadius: 0,
+    borderBottomLeftRadius: 0
+  },
+  actionButtonFirst: {
+    marginLeft: 8,
+    borderTopRightRadius: 0,
+    borderBottomRightRadius: 0
+  },
+  actionButtonMiddle: {
+    borderRadius: 0
+  },
+  marginRight: {
+    marginRight: 8
+  },
+  marginLeft: {
+    marginLeft: 8
   }
 });
 
@@ -53,9 +73,20 @@ class GridActionsToolbar extends React.Component {
   };
   render() {
     const {
-      classes: { root, actionButton, iconSmall },
+      classes: {
+        root,
+        actionButton,
+        iconSmall,
+        actionButtonFirst,
+        actionButtonMiddle,
+        actionButtonLast,
+        marginRight,
+        marginLeft
+      },
       display,
-      isItemHidden
+      isItemHidden,
+      isFirstChild,
+      isLastChild
     } = this.props;
     return (
       <Zoom unmountOnExit in={display}>
@@ -65,7 +96,11 @@ class GridActionsToolbar extends React.Component {
               onClick={this.copyItem}
               size="small"
               variant="contained"
-              className={actionButton}
+              className={classnames(
+                actionButton,
+                actionButtonFirst,
+                marginLeft
+              )}
             >
               <FileCopy className={iconSmall} />
             </Button>
@@ -75,7 +110,7 @@ class GridActionsToolbar extends React.Component {
               onClick={this.removeItem}
               size="small"
               variant="contained"
-              className={actionButton}
+              className={classnames(actionButton, actionButtonMiddle)}
             >
               <Delete className={iconSmall} />
             </Button>
@@ -85,7 +120,11 @@ class GridActionsToolbar extends React.Component {
               onClick={isItemHidden ? this.showItem : this.hideItem}
               size="small"
               variant="contained"
-              className={actionButton}
+              className={classnames(
+                actionButton,
+                actionButtonLast,
+                marginRight
+              )}
             >
               {isItemHidden ? (
                 <RemoveRedEyeOutlined className={iconSmall} />
@@ -94,6 +133,38 @@ class GridActionsToolbar extends React.Component {
               )}
             </Button>
           </Tooltip>
+          {!isFirstChild && (
+            <Tooltip title="Переместить блок вверх">
+              <Button
+                onClick={this.copyItem}
+                size="small"
+                variant="contained"
+                className={classnames(
+                  actionButton,
+                  marginLeft,
+                  !isLastChild ? actionButtonFirst : marginRight
+                )}
+              >
+                <ArrowUpward className={iconSmall} />
+              </Button>
+            </Tooltip>
+          )}
+          {!isLastChild && (
+            <Tooltip title="Переместить блок вниз">
+              <Button
+                onClick={this.copyItem}
+                size="small"
+                variant="contained"
+                className={classnames(
+                  actionButton,
+                  marginRight,
+                  !isFirstChild ? actionButtonLast : marginLeft
+                )}
+              >
+                <ArrowDownward className={iconSmall} />
+              </Button>
+            </Tooltip>
+          )}
         </div>
       </Zoom>
     );

@@ -4,8 +4,8 @@ import { withStyles } from "@material-ui/core/styles";
 import classNames from "classnames";
 
 const styles = () => ({
-  container: {
-    minHeight: 34 + 15 * 2,
+  item: {
+    minHeight: 34 + 15 * 2
   },
   grid: {
     position: "relative"
@@ -14,14 +14,14 @@ const styles = () => ({
 
 const GridComponent = ({
   children,
-  classes: { container, grid },
+  classes: { item, grid },
   mode,
   className,
   ...props
 }) => (
   <Grid
     className={grid}
-    classes={{ container: classNames(container, className) }}
+    classes={{ item: classNames(item, className) }}
     {...props}
   >
     {children}

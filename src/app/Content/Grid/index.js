@@ -80,6 +80,8 @@ class GridComponent extends React.Component {
               changeItem={changeItem}
               copyItem={copyItem}
               display={isHovered}
+              isFirstChild={isFirstChild}
+              isLastChild={isLastChild}
             />
             <AddButton display={isHovered} />
           </Fragment>
