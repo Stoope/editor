@@ -6,9 +6,6 @@ import classNames from "classnames";
 const styles = () => ({
   container: {
     minHeight: 34 + 15 * 2,
-    transition: "all 0.2s ease-out",
-    margin: -2,
-    border: "2px dashed rgba(204, 204, 204, 0)"
   },
   grid: {
     position: "relative"

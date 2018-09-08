@@ -10,6 +10,12 @@ const styles = () => ({
   dashedBorder: {
     border: "2px dashed rgba(204, 204, 204, 1)"
   },
+  dashedBorderHidden: {
+    border: "2px dashed rgba(204, 204, 204, 0)"
+  },
+  grid: {
+    transition: "all 0.2s ease-out"
+  },
   hiddenBlock: {
     display: "flex",
     alignSelf: "stretch",
@@ -42,7 +48,7 @@ class GridComponent extends React.Component {
       removeItem,
       copyItem,
       changeItem,
-      classes: { dashedBorder, hiddenBlock },
+      classes: { dashedBorder, hiddenBlock, grid, dashedBorderHidden },
       ...props
     } = this.props;
     const { isHovered } = this.state;
@@ -52,7 +58,10 @@ class GridComponent extends React.Component {
         {...props}
         onMouseEnter={this.onMouseEnter}
         onMouseLeave={this.onMouseLeave}
-        className={classNames(isHovered && dashedBorder)}
+        className={classNames(
+          grid,
+          isHovered ? dashedBorder : dashedBorderHidden
+        )}
       >
         {isItemHidden ? (
           <Typography className={hiddenBlock} align="center" variant="title">
