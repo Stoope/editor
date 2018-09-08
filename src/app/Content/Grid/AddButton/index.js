@@ -3,7 +3,7 @@ import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import AddIcon from "@material-ui/icons/Add";
 import Zoom from "@material-ui/core/Zoom";
-import Tooltip from "@material-ui/core/Tooltip";
+import Tooltip from "../Tooltip";
 
 const styles = () => ({
   root: {
@@ -12,7 +12,8 @@ const styles = () => ({
     right: 0,
     bottom: -20,
     margin: "0 auto",
-    zIndex: 1
+    zIndex: 1,
+    width: 40
   }
 });
 
@@ -24,19 +25,15 @@ class GridActionsToolbar extends React.Component {
       display
     } = this.props;
     return (
-      <Tooltip enterDelay={300} title="Добавить блок">
-        <Zoom in={display}>
-          <Button
-            variant="fab"
-            color="primary"
-            mini
-            aria-label="Add"
-            className={root}
-          >
-            <AddIcon />
-          </Button>
-        </Zoom>
-      </Tooltip>
+      <Zoom unmountOnExit in={display}>
+        <div className={root}>
+          <Tooltip title="Добавить блок">
+            <Button variant="fab" color="primary" mini aria-label="Add">
+              <AddIcon />
+            </Button>
+          </Tooltip>
+        </div>
+      </Zoom>
     );
   }
 }

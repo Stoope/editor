@@ -14,7 +14,8 @@ const styles = () => ({
     border: "2px dashed rgba(204, 204, 204, 0)"
   },
   grid: {
-    transition: "all 0.2s ease-out"
+    transition: "all 0.2s ease-out",
+    margin: "-2px 0px"
   },
   hiddenBlock: {
     display: "flex",

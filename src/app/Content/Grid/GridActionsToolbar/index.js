@@ -6,7 +6,7 @@ import RemoveRedEyeOutlined from "@material-ui/icons/RemoveRedEyeOutlined";
 import RemoveRedEye from "@material-ui/icons/RemoveRedEye";
 import FileCopy from "@material-ui/icons/FileCopy";
 import Zoom from "@material-ui/core/Zoom";
-import Tooltip from "@material-ui/core/Tooltip";
+import Tooltip from "../Tooltip";
 
 const styles = () => ({
   root: {
@@ -58,9 +58,9 @@ class GridActionsToolbar extends React.Component {
       isItemHidden
     } = this.props;
     return (
-      <Zoom in={display}>
+      <Zoom unmountOnExit in={display}>
         <div className={root}>
-          <Tooltip enterDelay={300} title="Копировать блок">
+          <Tooltip title="Копировать блок">
             <Button
               onClick={this.copyItem}
               size="small"
@@ -70,7 +70,7 @@ class GridActionsToolbar extends React.Component {
               <FileCopy className={iconSmall} />
             </Button>
           </Tooltip>
-          <Tooltip enterDelay={300} title="Удалить блок">
+          <Tooltip title="Удалить блок">
             <Button
               onClick={this.removeItem}
               size="small"
@@ -80,10 +80,7 @@ class GridActionsToolbar extends React.Component {
               <Delete className={iconSmall} />
             </Button>
           </Tooltip>
-          <Tooltip
-            enterDelay={300}
-            title={isItemHidden ? "Показать блок" : "Скрыть блок"}
-          >
+          <Tooltip title={isItemHidden ? "Показать блок" : "Скрыть блок"}>
             <Button
               onClick={isItemHidden ? this.showItem : this.hideItem}
               size="small"
