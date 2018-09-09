@@ -2,7 +2,7 @@ import nanoid from "nanoid";
 
 const insertInArray = (index, item, array) => {
   const newArray = [...array];
-  newArray.splice(index, 0, item);
+  newArray.splice(index + 1, 0, item);
   return newArray;
 };
 
@@ -24,7 +24,7 @@ const findItemById = (id, content) => {
       result = findItemById(id, element);
     });
   }
-  if (Array.isArray(content.content)) {
+  if (content && Array.isArray(content.content)) {
     content.content.forEach(element => {
       result = findItemById(id, element);
     });
@@ -41,7 +41,7 @@ export const removeItemById = (id, content) => {
       .map(element => removeItemById(id, element))
       .filter(element => element != null);
   }
-  if (Array.isArray(content.content)) {
+  if (content && Array.isArray(content.content)) {
     return {
       ...content,
       content: content.content
@@ -59,7 +59,7 @@ export const changeItemById = (props, content) => {
   if (Array.isArray(content)) {
     return content.map(element => changeItemById(props, element));
   }
-  if (Array.isArray(content.content)) {
+  if (content && Array.isArray(content.content)) {
     return {
       ...content,
       content: content.content.map(element => changeItemById(props, element))
@@ -79,7 +79,7 @@ export const copyItemById = (id, content) => {
     }
     return content.map(element => copyItemById(id, element));
   }
-  if (Array.isArray(content.content)) {
+  if (content && Array.isArray(content.content)) {
     const item = content.content.find(element => element.id === id);
     if (item) {
       const index = content.content.findIndex(element => element.id === id);
@@ -97,9 +97,6 @@ export const copyItemById = (id, content) => {
       content: content.content.map(element => copyItemById(id, element))
     };
   }
-  if (content.id === id) {
-    return [content, { ...content, id: nanoid() }];
-  }
   return content;
 };
 
@@ -109,12 +106,12 @@ export const moveItemById = (id, content, indexChange) => {
     if (item) {
       const index = content.findIndex(element => element.id === id);
       return swapItemsInArray(index, index + indexChange, content).map(
-        element => moveItemById(id, element)
+        element => moveItemById(id, element, indexChange)
       );
     }
-    return content.map(element => moveItemById(id, element));
+    return content.map(element => moveItemById(id, element, indexChange));
   }
-  if (Array.isArray(content.content)) {
+  if (content && Array.isArray(content.content)) {
     const item = content.content.find(element => element.id === id);
     if (item) {
       const index = content.content.findIndex(element => element.id === id);
@@ -124,12 +121,14 @@ export const moveItemById = (id, content, indexChange) => {
           index,
           index + indexChange,
           content.content
-        ).map(element => moveItemById(id, element))
+        ).map(element => moveItemById(id, element, indexChange))
       };
     }
     return {
       ...content,
-      content: content.content.map(element => moveItemById(id, element))
+      content: content.content.map(element =>
+        moveItemById(id, element, indexChange)
+      )
     };
   }
   return content;
