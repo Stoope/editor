@@ -18,10 +18,10 @@ const styles = () => ({
   },
   hiddenBlock: {
     display: "flex",
-    alignSelf: "stretch",
     flexGrow: 1,
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    height: "100%"
   }
 });
 
@@ -50,11 +50,12 @@ class GridComponent extends React.Component {
       changeItem,
       moveItemUp,
       moveItemDown,
+      hidden,
       classes: { dashedBorder, hiddenBlock, grid, dashedBorderHidden },
       ...props
     } = this.props;
     const { isHovered } = this.state;
-    const isItemHidden = Boolean(props.hidden);
+    const isItemHidden = Boolean(hidden);
     return (
       <View
         {...props}
@@ -66,7 +67,7 @@ class GridComponent extends React.Component {
         )}
       >
         {isItemHidden ? (
-          <Typography className={hiddenBlock} align="center" variant="title">
+          <Typography className={hiddenBlock} variant="title">
             Блок скрыт
           </Typography>
         ) : (
