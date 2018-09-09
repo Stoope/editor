@@ -11,18 +11,21 @@ const initialState = {
     {
       id: 1,
       type: "Grid",
+      xs: 12,
       container: true,
       content: "content1"
     },
     {
       id: 2,
       type: "Grid",
+      xs: 12,
       container: true,
       content: "content2"
     },
     {
       id: 3,
       type: "Grid",
+      xs: 12,
       container: true,
       content: "content3"
     }

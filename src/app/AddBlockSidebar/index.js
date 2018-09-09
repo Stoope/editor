@@ -1,9 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
 import { CHANGE_EDITOR_MODE } from "~/actions";
-import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
+import Drawer from "@material-ui/core/Drawer";
 
-class Sidebar extends React.Component {
+class AddBlockSidebar extends React.Component {
   onOpen = () => {
     const { CHANGE_EDITOR_MODE } = this.props;
     CHANGE_EDITOR_MODE("adding");
@@ -15,13 +15,15 @@ class Sidebar extends React.Component {
   render() {
     const { mode } = this.props;
     return (
-      <SwipeableDrawer
-        open={mode === "adding"}
+      <Drawer
+        anchor="bottom"
+        variant="persistent"
+        open
         onClose={this.onClose}
         onOpen={this.onOpen}
       >
         <div>ddd</div>
-      </SwipeableDrawer>
+      </Drawer>
     );
   }
 }
@@ -33,4 +35,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { CHANGE_EDITOR_MODE }
-)(Sidebar);
+)(AddBlockSidebar);

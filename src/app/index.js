@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { withStyles } from "@material-ui/core/styles";
 import Content from "./Content";
+// import AddBlockSidebar from "./AddBlockSidebar";
 import {
   REMOVE_EDITOR_CONTENT_ITEM,
   CHANGE_EDITOR_CONTENT_ITEM,
@@ -21,6 +22,7 @@ const styles = () => ({
 const App = ({ classes: { root }, ...props }) => (
   <div className={root}>
     <Content {...props} />
+    {/* <AddBlockSidebar {...props} /> */}
   </div>
 );
 
