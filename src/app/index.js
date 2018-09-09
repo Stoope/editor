@@ -9,7 +9,7 @@ import {
   COPY_EDITOR_CONTENT_ITEM,
   MOVE_EDITOR_CONTENT_ITEM_UP,
   MOVE_EDITOR_CONTENT_ITEM_DOWN
-} from "~/actions";
+} from "@/actions";
 
 const styles = () => ({
   root: {

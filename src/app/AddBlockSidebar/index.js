@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { CHANGE_EDITOR_MODE } from "~/actions";
+import { CHANGE_EDITOR_MODE } from "@/actions";
 import Drawer from "@material-ui/core/Drawer";
 
 class AddBlockSidebar extends React.Component {
