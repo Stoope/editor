@@ -18,7 +18,12 @@ const styles = () => ({
 });
 
 class GridActionsToolbar extends React.Component {
-  state = {};
+  addBlock = () => {
+    const { openAddBlockSidebar, id } = this.props;
+    if (openAddBlockSidebar != null) {
+      openAddBlockSidebar(id);
+    }
+  };
   render() {
     const {
       classes: { root },
@@ -28,7 +33,13 @@ class GridActionsToolbar extends React.Component {
       <Zoom unmountOnExit in={display}>
         <div className={root}>
           <Tooltip title="Добавить блок">
-            <Button variant="fab" color="primary" mini aria-label="Add">
+            <Button
+              onClick={this.addBlock}
+              variant="fab"
+              color="primary"
+              mini
+              aria-label="Add"
+            >
               <AddIcon />
             </Button>
           </Tooltip>

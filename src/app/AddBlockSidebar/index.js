@@ -1,38 +1,53 @@
 import React from "react";
-import { connect } from "react-redux";
-import { CHANGE_EDITOR_MODE } from "@/actions";
+import { withStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
+import Grid from "@material-ui/core/Grid";
 import Drawer from "@material-ui/core/Drawer";
+import PluginCard from "./PluginCard";
+import * as Plugins from "../Content/Plugins";
+
+const styles = () => ({
+  root: {
+    padding: 16
+  }
+});
 
 class AddBlockSidebar extends React.Component {
-  onOpen = () => {
-    const { CHANGE_EDITOR_MODE } = this.props;
-    CHANGE_EDITOR_MODE("adding");
-  };
   onClose = () => {
-    const { CHANGE_EDITOR_MODE } = this.props;
-    CHANGE_EDITOR_MODE("editing");
+    const { closeAddBlockSidebar } = this.props;
+    closeAddBlockSidebar();
   };
   render() {
-    // const { mode } = this.props;
+    const {
+      addBlock: { isOpen, currentId },
+      addItemAfter,
+      classes: { root }
+    } = this.props;
     return (
-      <Drawer
-        anchor="bottom"
-        variant="persistent"
-        open
-        onClose={this.onClose}
-        onOpen={this.onOpen}
-      >
-        <div>ddd</div>
+      <Drawer anchor="top" open={isOpen} onClose={this.onClose}>
+        <Grid container className={root}>
+          <Grid item xs={12}>
+            <Typography variant="title" gutterBottom>
+              Добавить блок
+            </Typography>
+          </Grid>
+          <Grid item container xs={12} spacing={16}>
+            {Object.values(Plugins)
+              .filter(item => item.id !== "Grid")
+              .map(item => (
+                <Grid key={item.id} item xs={2}>
+                  <PluginCard
+                    addItemAfter={addItemAfter}
+                    currentId={currentId}
+                    item={item}
+                  />
+                </Grid>
+              ))}
+          </Grid>
+        </Grid>
       </Drawer>
     );
   }
 }
 
-const mapStateToProps = state => ({
-  mode: state.mode.mode
-});
-
-export default connect(
-  mapStateToProps,
-  { CHANGE_EDITOR_MODE }
-)(AddBlockSidebar);
+export default withStyles(styles)(AddBlockSidebar);

@@ -12,20 +12,30 @@ const initialState = {
     {
       id: 1,
       type: "Grid",
-      xs: 12,
       container: true,
+      item: true,
+      xs: 12,
       content: "content1"
     },
     {
       id: 2,
       type: "Grid",
-      xs: 12,
       container: true,
-      content: "content2"
+      item: true,
+      xs: 12,
+      content: [
+        {
+          id: 60,
+          height: 800,
+          type: "TestPlugin",
+          uri: `https://cdn.theatlantic.com/assets/media/img/photo/2015/11/images-from-the-2016-sony-world-pho/s01_130921474920553591/main_1500.jpg`
+        }
+      ]
     },
     {
       id: 3,
       type: "Grid",
+      item: true,
       xs: 12,
       container: true,
       content: "content3"

@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import classNames from "classnames";
 import Typography from "@material-ui/core/Typography";
@@ -44,20 +44,20 @@ class GridComponent extends React.Component {
       isFirstChild,
       isLastChild,
       children,
-      mode,
       removeItem,
       copyItem,
       changeItem,
       moveItemUp,
       moveItemDown,
       hidden,
+      openAddBlockSidebar,
       classes: { dashedBorder, hiddenBlock, grid, dashedBorderHidden },
       ...props
     } = this.props;
     const { isHovered } = this.state;
     const isItemHidden = Boolean(hidden);
     return (
-      <View
+      <View.Component
         {...props}
         onMouseEnter={this.onMouseEnter}
         onMouseLeave={this.onMouseLeave}
@@ -73,26 +73,29 @@ class GridComponent extends React.Component {
         ) : (
           children
         )}
-        {mode === "edditing" && (
-          <Fragment>
-            <GridActionsToolbar
-              id={props.id}
-              removeItem={removeItem}
-              isItemHidden={isItemHidden}
-              changeItem={changeItem}
-              copyItem={copyItem}
-              display={isHovered}
-              isFirstChild={isFirstChild}
-              isLastChild={isLastChild}
-              moveItemUp={moveItemUp}
-              moveItemDown={moveItemDown}
-            />
-            <AddButton display={isHovered} />
-          </Fragment>
-        )}
-      </View>
+        <GridActionsToolbar
+          id={props.id}
+          removeItem={removeItem}
+          isItemHidden={isItemHidden}
+          changeItem={changeItem}
+          copyItem={copyItem}
+          display={isHovered}
+          isFirstChild={isFirstChild}
+          isLastChild={isLastChild}
+          moveItemUp={moveItemUp}
+          moveItemDown={moveItemDown}
+        />
+        <AddButton
+          display={isHovered}
+          openAddBlockSidebar={openAddBlockSidebar}
+          id={props.id}
+        />
+      </View.Component>
     );
   }
 }
 
-export default withStyles(styles)(GridComponent);
+export default {
+  ...View,
+  Component: withStyles(styles)(GridComponent)
+};

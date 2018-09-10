@@ -34,10 +34,18 @@ module.exports = {
             loader: "file-loader",
             options: {
               name: "[name].[ext]",
-              outputPath: "fonts/"
+              outputPath: "static/fonts/"
             }
           }
         ]
+      },
+      {
+        test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
+        loader: "url-loader",
+        options: {
+          limit: 100,
+          name: "static/media/[name].[hash:8].[ext]"
+        }
       }
     ]
   },

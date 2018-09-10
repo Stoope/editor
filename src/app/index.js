@@ -2,13 +2,16 @@ import React from "react";
 import { connect } from "react-redux";
 import { withStyles } from "@material-ui/core/styles";
 import Content from "./Content";
-// import AddBlockSidebar from "./AddBlockSidebar";
+import AddBlockSidebar from "./AddBlockSidebar";
 import {
   REMOVE_EDITOR_CONTENT_ITEM,
   CHANGE_EDITOR_CONTENT_ITEM,
   COPY_EDITOR_CONTENT_ITEM,
   MOVE_EDITOR_CONTENT_ITEM_UP,
-  MOVE_EDITOR_CONTENT_ITEM_DOWN
+  MOVE_EDITOR_CONTENT_ITEM_DOWN,
+  OPEN_EDITOR_ADD_BLOCK,
+  CLOSE_EDITOR_ADD_BLOCK,
+  ADD_EDITOR_CONTENT_ITEM_AFTER
 } from "@/actions";
 
 const styles = () => ({
@@ -19,16 +22,40 @@ const styles = () => ({
   }
 });
 
-const App = ({ classes: { root }, ...props }) => (
+const App = ({
+  classes: { root },
+  removeItem,
+  changeItem,
+  copyItem,
+  moveItemUp,
+  moveItemDown,
+  openAddBlockSidebar,
+  content,
+  addBlock,
+  closeAddBlockSidebar,
+  addItemAfter
+}) => (
   <div className={root}>
-    <Content {...props} />
-    {/* <AddBlockSidebar {...props} /> */}
+    <Content
+      content={content}
+      removeItem={removeItem}
+      changeItem={changeItem}
+      copyItem={copyItem}
+      moveItemUp={moveItemUp}
+      moveItemDown={moveItemDown}
+      openAddBlockSidebar={openAddBlockSidebar}
+    />
+    <AddBlockSidebar
+      addBlock={addBlock}
+      closeAddBlockSidebar={closeAddBlockSidebar}
+      addItemAfter={addItemAfter}
+    />
   </div>
 );
 
 const mapStateToProps = state => ({
   content: state.content.content,
-  mode: state.mode.mode
+  addBlock: state.addBlock
 });
 
 export default connect(
@@ -38,6 +65,9 @@ export default connect(
     changeItem: CHANGE_EDITOR_CONTENT_ITEM,
     copyItem: COPY_EDITOR_CONTENT_ITEM,
     moveItemUp: MOVE_EDITOR_CONTENT_ITEM_UP,
-    moveItemDown: MOVE_EDITOR_CONTENT_ITEM_DOWN
+    moveItemDown: MOVE_EDITOR_CONTENT_ITEM_DOWN,
+    openAddBlockSidebar: OPEN_EDITOR_ADD_BLOCK,
+    closeAddBlockSidebar: CLOSE_EDITOR_ADD_BLOCK,
+    addItemAfter: ADD_EDITOR_CONTENT_ITEM_AFTER
   }
 )(withStyles(styles)(App));

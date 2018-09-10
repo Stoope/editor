@@ -59,6 +59,14 @@ module.exports = {
             }
           }
         ]
+      },
+      {
+        test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
+        loader: "url-loader",
+        options: {
+          limit: 100,
+          name: "static/media/[name].[hash:8].[ext]"
+        }
       }
     ]
   },

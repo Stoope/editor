@@ -1,5 +1,5 @@
 import React from "react";
-import Grid from "../Plugins/Grid";
+import * as Plugins from "../Plugins";
 
 const renderComponent = (component, props) => {
   if (component === null) {
@@ -15,23 +15,17 @@ const renderComponent = (component, props) => {
     default:
       break;
   }
-  let Component;
-  switch (component.type) {
-    case "Grid":
-      Component = Grid;
-      break;
-    default:
-      Component = null;
-      break;
-  }
-  if (Component === null) {
-    return null;
-  }
-  return (
-    <Component {...component} {...props} key={component.id}>
-      <RenderChildren content={component.content} />
-    </Component>
+  const Component = Object.values(Plugins).find(
+    item => item.id === component.type
   );
+  if (Component) {
+    return (
+      <Component.Component {...component} {...props} key={component.id}>
+        <RenderChildren content={component.content} />
+      </Component.Component>
+    );
+  }
+  return null;
 };
 
 const RenderChildren = ({ content, ...props }) =>

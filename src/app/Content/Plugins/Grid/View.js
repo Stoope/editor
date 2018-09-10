@@ -22,4 +22,14 @@ const GridComponent = ({
   </Grid>
 );
 
-export default withStyles(styles)(GridComponent);
+export default {
+  Component: withStyles(styles)(GridComponent),
+  id: "Grid",
+  name: "Контейнер",
+  defaultState: {
+    type: "Grid",
+    container: true,
+    content: null
+  },
+  preview: null
+};
