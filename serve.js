@@ -8,5 +8,5 @@ const server = http.createServer((request, response) =>
 );
 
 server.listen(PORT, () => {
-  //   console.log("Running at http://localhost:3000");
+  console.log(`Running at port ${PORT}`);
 });
