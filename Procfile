@@ -1,1 +1,1 @@
-web: node serve.js
+web: yarn serve -s dist

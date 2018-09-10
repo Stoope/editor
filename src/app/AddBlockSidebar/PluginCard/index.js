@@ -25,6 +25,7 @@ class AddBlockSidebar extends React.Component {
     const {
       addItemAfter,
       item: { defaultState },
+      closeAddBlockSidebar,
       currentId
     } = this.props;
 
@@ -42,6 +43,9 @@ class AddBlockSidebar extends React.Component {
                 : { ...defaultState.content, id: nanoid() }
         }
       });
+      if (closeAddBlockSidebar != null) {
+        closeAddBlockSidebar();
+      }
     }
   };
   render() {

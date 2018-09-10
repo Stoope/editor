@@ -21,6 +21,7 @@ class AddBlockSidebar extends React.Component {
     const {
       addBlock: { isOpen, currentId },
       addItemAfter,
+      closeAddBlockSidebar,
       classes: { root }
     } = this.props;
     return (
@@ -39,6 +40,7 @@ class AddBlockSidebar extends React.Component {
                   <PluginCard
                     addItemAfter={addItemAfter}
                     currentId={currentId}
+                    closeAddBlockSidebar={closeAddBlockSidebar}
                     item={item}
                   />
                 </Grid>
