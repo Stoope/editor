@@ -40,6 +40,7 @@
     "react-redux": "^5.0.7",
     "redux": "^4.0.0",
     "serve": "^10.0.0",
+    "serve-handler": "^5.0.2",
     "typeface-roboto": "^0.0.54"
   },
   "devDependencies": {
