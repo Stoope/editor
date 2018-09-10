@@ -8,6 +8,7 @@
     "build": "rm -rf dist/* && webpack --mode production --config ./webpack.config.prod.js",
     "test": "jest",
     "test:watch": "jest --watch",
+    "postinstall": "yarn build",
     "precommit": "lint-staged"
   },
   "engines": {
