@@ -42,9 +42,7 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: {
-          loader: "babel-loader"
-        }
+        use: ["thread-loader", { loader: "babel-loader" }]
       },
       {
         test: /\.css$/,

@@ -12,7 +12,15 @@ module.exports = {
     rules: [
       {
         test: /\.(js|jsx)$/,
-        use: "babel-loader",
+        use: [
+          {
+            loader: "thread-loader",
+            options: {
+              poolTimeout: Infinity
+            }
+          },
+          "babel-loader"
+        ],
         exclude: /node_modules/
       },
       {
