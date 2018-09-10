@@ -64,6 +64,7 @@
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "postcss-safe-parser": "^4.0.1",
     "prettier": "^1.14.2",
+    "serve": "^10.0.0",
     "style-loader": "^0.23.0",
     "thread-loader": "^1.2.0",
     "uglifyjs-webpack-plugin": "^1.3.0",
