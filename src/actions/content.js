@@ -20,3 +20,7 @@ export const MOVE_EDITOR_CONTENT_ITEM_DOWN = payload => ({
   type: constants.MOVE_EDITOR_CONTENT_ITEM_DOWN,
   payload
 });
+export const ADD_EDITOR_CONTENT_ITEM_AFTER = payload => ({
+  type: constants.ADD_EDITOR_CONTENT_ITEM_AFTER,
+  payload
+});

@@ -3,7 +3,8 @@ import {
   removeItemById,
   changeItemById,
   copyItemById,
-  moveItemById
+  moveItemById,
+  addItemAfterById
 } from "./helpers";
 
 const initialState = {
@@ -58,6 +59,11 @@ const reducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         content: moveItemById(payload, state.content, 1)
+      };
+    case constants.ADD_EDITOR_CONTENT_ITEM_AFTER:
+      return {
+        ...state,
+        content: addItemAfterById(payload, state.content)
       };
     default:
       return state;

@@ -13,7 +13,7 @@ class AddBlockSidebar extends React.Component {
     CHANGE_EDITOR_MODE("editing");
   };
   render() {
-    const { mode } = this.props;
+    // const { mode } = this.props;
     return (
       <Drawer
         anchor="bottom"

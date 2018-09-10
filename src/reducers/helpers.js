@@ -133,3 +133,39 @@ export const moveItemById = (id, content, indexChange) => {
   }
   return content;
 };
+
+export const addItemAfterById = (props, content) => {
+  if (Array.isArray(content)) {
+    const item = content.find(element => element.id === props.id);
+    if (item) {
+      const index = content.findIndex(element => element.id === props.id);
+      return insertInArray(
+        index,
+        { ...props.content, id: nanoid() },
+        content
+      ).map(element => addItemAfterById(props, element));
+    }
+    return content.map(element => addItemAfterById(props, element));
+  }
+  if (content && Array.isArray(content.content)) {
+    const item = content.content.find(element => element.id === props.id);
+    if (item) {
+      const index = content.content.findIndex(
+        element => element.id === props.id
+      );
+      return {
+        ...content,
+        content: insertInArray(
+          index,
+          { ...props.content, id: nanoid() },
+          content.content
+        ).map(element => addItemAfterById(props, element))
+      };
+    }
+    return {
+      ...content,
+      content: content.content.map(element => addItemAfterById(props, element))
+    };
+  }
+  return content;
+};

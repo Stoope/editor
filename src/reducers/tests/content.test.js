@@ -409,4 +409,84 @@ describe("content reducer", () => {
       ]
     });
   });
+  it("should handle ADD_EDITOR_CONTENT_ITEM_AFTER", () => {
+    expect(
+      reducer(initialState, {
+        type: constants.ADD_EDITOR_CONTENT_ITEM_AFTER,
+        payload: { id: 1, content: { content: "content7" } }
+      })
+    ).toMatchObject({
+      content: [
+        {
+          id: 1,
+          content: [
+            {
+              id: 4,
+              content: "content4"
+            }
+          ]
+        },
+        {
+          content: "content7"
+        },
+        {
+          id: 2,
+          content: "content2"
+        },
+        {
+          id: 3,
+          content: [
+            {
+              id: 5,
+              content: "content5"
+            },
+            {
+              id: 6,
+              content: "content6"
+            }
+          ]
+        }
+      ]
+    });
+  });
+  it("should handle ADD_EDITOR_CONTENT_ITEM_AFTER deep", () => {
+    expect(
+      reducer(initialState, {
+        type: constants.ADD_EDITOR_CONTENT_ITEM_AFTER,
+        payload: { id: 5, content: { content: "content7" } }
+      })
+    ).toMatchObject({
+      content: [
+        {
+          id: 1,
+          content: [
+            {
+              id: 4,
+              content: "content4"
+            }
+          ]
+        },
+        {
+          id: 2,
+          content: "content2"
+        },
+        {
+          id: 3,
+          content: [
+            {
+              id: 5,
+              content: "content5"
+            },
+            {
+              content: "content7"
+            },
+            {
+              id: 6,
+              content: "content6"
+            }
+          ]
+        }
+      ]
+    });
+  });
 });
