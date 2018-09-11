@@ -39,6 +39,20 @@ const initialState = {
       xs: 12,
       container: true,
       content: "content3"
+    },
+    {
+      id: 88,
+      type: "Grid",
+      container: true,
+      item: true,
+      xs: 12,
+      content: [
+        {
+          id: 630,
+          height: 500,
+          type: "TestPlugin2"
+        }
+      ]
     }
   ]
 };
