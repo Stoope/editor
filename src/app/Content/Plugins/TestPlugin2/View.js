@@ -44,7 +44,7 @@ export default {
     xs: 12,
     content: [
       {
-        type: "TestPlugin",
+        type: "TestPlugin2",
         height: 500
       }
     ]
