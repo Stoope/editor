@@ -12,7 +12,8 @@
     "precommit": "lint-staged"
   },
   "engines": {
-    "node": ">10.0.0"
+    "node": ">10.0.0",
+    "yarn": ">1.9.0"
   },
   "repository": {
     "type": "git",
