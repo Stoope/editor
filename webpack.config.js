@@ -7,6 +7,8 @@ const htmlWebpackPlugin = new HtmlWebpackPlugin({
 });
 
 module.exports = {
+  mode: "development",
+  devtool: "eval-cheap-module-source-map",
   entry: path.join(__dirname, "src/index.js"),
   module: {
     rules: [
@@ -61,6 +63,7 @@ module.exports = {
     watchOptions: {
       aggregateTimeout: 300,
       poll: 1000
-    }
+    },
+    historyApiFallback: true
   }
 };

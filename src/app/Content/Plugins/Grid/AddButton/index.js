@@ -21,7 +21,14 @@ class GridActionsToolbar extends React.Component {
   addBlock = () => {
     const { openAddBlockSidebar, id } = this.props;
     if (openAddBlockSidebar != null) {
-      openAddBlockSidebar(id);
+      openAddBlockSidebar({
+        id,
+        props: {
+          container: true,
+          item: true,
+          xs: 12
+        }
+      });
     }
   };
   render() {

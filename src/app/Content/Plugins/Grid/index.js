@@ -41,14 +41,8 @@ class GridComponent extends React.Component {
   };
   render() {
     const {
-      isFirstChild,
       isLastChild,
       children,
-      removeItem,
-      copyItem,
-      changeItem,
-      moveItemUp,
-      moveItemDown,
       hidden,
       openAddBlockSidebar,
       classes: { dashedBorder, hiddenBlock, grid, dashedBorderHidden },
@@ -75,15 +69,10 @@ class GridComponent extends React.Component {
         )}
         <GridActionsToolbar
           id={props.id}
-          removeItem={removeItem}
           isItemHidden={isItemHidden}
-          changeItem={changeItem}
-          copyItem={copyItem}
           display={isHovered}
-          isFirstChild={isFirstChild}
           isLastChild={isLastChild}
-          moveItemUp={moveItemUp}
-          moveItemDown={moveItemDown}
+          {...props}
         />
         <AddButton
           display={isHovered}

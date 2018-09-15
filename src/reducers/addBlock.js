@@ -2,7 +2,8 @@ import * as constants from "@/constants";
 
 const initialState = {
   isOpen: false,
-  currentId: null
+  currentId: null,
+  props: {}
 };
 
 const reducer = (state = initialState, { type, payload }) => {
@@ -11,13 +12,15 @@ const reducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         isOpen: true,
-        currentId: payload
+        currentId: payload.id,
+        props: payload.props
       };
     case constants.CLOSE_EDITOR_ADD_BLOCK:
       return {
         ...state,
         isOpen: false,
-        currentId: null
+        currentId: null,
+        props: {}
       };
     default:
       return state;

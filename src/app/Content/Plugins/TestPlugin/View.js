@@ -25,9 +25,6 @@ export default {
   description: "Тестовый плагин для теста",
   defaultState: {
     type: "Grid",
-    container: true,
-    item: true,
-    xs: 12,
     content: [
       {
         type: "TestPlugin",

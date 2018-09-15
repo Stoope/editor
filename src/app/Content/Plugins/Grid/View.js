@@ -15,9 +15,14 @@ const GridComponent = ({
   classes: { grid },
   mode,
   className,
+  color,
   ...props
 }) => (
-  <Grid className={classNames(grid, className)} {...props}>
+  <Grid
+    className={classNames(grid, className)}
+    style={{ backgroundColor: color }}
+    {...props}
+  >
     {children}
   </Grid>
 );

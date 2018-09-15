@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Delete from "@material-ui/icons/Delete";
@@ -11,6 +11,8 @@ import Settings from "@material-ui/icons/Settings";
 import Zoom from "@material-ui/core/Zoom";
 import classnames from "classnames";
 import Tooltip from "../Tooltip";
+import SettingsSidebar from "@/app/SettingsSidebar";
+import ColorPicker from "@/app/SettingsHelpers/ColorPicker";
 
 const styles = () => ({
   root: {
@@ -48,6 +50,13 @@ const styles = () => ({
 });
 
 class GridActionsToolbar extends React.Component {
+  state = { isSettingsOpen: false };
+  closeSidebar = () => {
+    this.setState({ isSettingsOpen: false });
+  };
+  openSidebar = () => {
+    this.setState({ isSettingsOpen: true });
+  };
   removeItem = () => {
     const { removeItem, id } = this.props;
     if (removeItem != null) {
@@ -64,6 +73,12 @@ class GridActionsToolbar extends React.Component {
     const { changeItem, id } = this.props;
     if (changeItem != null) {
       changeItem({ id, hidden: true });
+    }
+  };
+  changeColor = color => {
+    const { changeItem, id } = this.props;
+    if (changeItem != null) {
+      changeItem({ id, color });
     }
   };
   showItem = () => {
@@ -99,97 +114,108 @@ class GridActionsToolbar extends React.Component {
       display,
       isItemHidden,
       isFirstChild,
-      isLastChild
+      isLastChild,
+      color
     } = this.props;
+    const { isSettingsOpen } = this.state;
     return (
-      <Zoom unmountOnExit in={display}>
-        <div className={root}>
-          <Tooltip title="Копировать блок">
-            <Button
-              onClick={this.copyItem}
-              size="small"
-              variant="contained"
-              className={classnames(
-                actionButton,
-                actionButtonFirst,
-                marginLeft
-              )}
-            >
-              <FileCopy className={iconSmall} />
-            </Button>
-          </Tooltip>
-          <Tooltip title="Настроить блок">
-            <Button
-              // onClick={this.removeItem}
-              size="small"
-              variant="contained"
-              className={classnames(actionButton, actionButtonMiddle)}
-            >
-              <Settings className={iconSmall} />
-            </Button>
-          </Tooltip>
-          <Tooltip title="Удалить блок">
-            <Button
-              onClick={this.removeItem}
-              size="small"
-              variant="contained"
-              className={classnames(actionButton, actionButtonMiddle)}
-            >
-              <Delete className={iconSmall} />
-            </Button>
-          </Tooltip>
-          <Tooltip title={isItemHidden ? "Показать блок" : "Скрыть блок"}>
-            <Button
-              onClick={isItemHidden ? this.showItem : this.hideItem}
-              size="small"
-              variant="contained"
-              className={classnames(
-                actionButton,
-                actionButtonLast,
-                marginRight
-              )}
-            >
-              {isItemHidden ? (
-                <RemoveRedEyeOutlined className={iconSmall} />
-              ) : (
-                <RemoveRedEye className={iconSmall} />
-              )}
-            </Button>
-          </Tooltip>
-          {!isFirstChild && (
-            <Tooltip title="Переместить блок вверх">
+      <Fragment>
+        <SettingsSidebar
+          title="Настройки секции"
+          isOpen={isSettingsOpen}
+          onClose={this.closeSidebar}
+        >
+          <ColorPicker onChange={this.changeColor} color={color} />
+        </SettingsSidebar>
+        <Zoom unmountOnExit in={display}>
+          <div className={root}>
+            <Tooltip title="Копировать блок">
               <Button
-                onClick={this.moveItemUp}
+                onClick={this.copyItem}
                 size="small"
                 variant="contained"
                 className={classnames(
                   actionButton,
-                  marginLeft,
-                  !isLastChild ? actionButtonFirst : marginRight
+                  actionButtonFirst,
+                  marginLeft
                 )}
               >
-                <ArrowUpward className={iconSmall} />
+                <FileCopy className={iconSmall} />
               </Button>
             </Tooltip>
-          )}
-          {!isLastChild && (
-            <Tooltip title="Переместить блок вниз">
+            <Tooltip title="Настроить блок">
               <Button
-                onClick={this.moveItemDown}
+                onClick={this.openSidebar}
+                size="small"
+                variant="contained"
+                className={classnames(actionButton, actionButtonMiddle)}
+              >
+                <Settings className={iconSmall} />
+              </Button>
+            </Tooltip>
+            <Tooltip title="Удалить блок">
+              <Button
+                onClick={this.removeItem}
+                size="small"
+                variant="contained"
+                className={classnames(actionButton, actionButtonMiddle)}
+              >
+                <Delete className={iconSmall} />
+              </Button>
+            </Tooltip>
+            <Tooltip title={isItemHidden ? "Показать блок" : "Скрыть блок"}>
+              <Button
+                onClick={isItemHidden ? this.showItem : this.hideItem}
                 size="small"
                 variant="contained"
                 className={classnames(
                   actionButton,
-                  marginRight,
-                  !isFirstChild ? actionButtonLast : marginLeft
+                  actionButtonLast,
+                  marginRight
                 )}
               >
-                <ArrowDownward className={iconSmall} />
+                {isItemHidden ? (
+                  <RemoveRedEyeOutlined className={iconSmall} />
+                ) : (
+                  <RemoveRedEye className={iconSmall} />
+                )}
               </Button>
             </Tooltip>
-          )}
-        </div>
-      </Zoom>
+            {!isFirstChild && (
+              <Tooltip title="Переместить блок вверх">
+                <Button
+                  onClick={this.moveItemUp}
+                  size="small"
+                  variant="contained"
+                  className={classnames(
+                    actionButton,
+                    marginLeft,
+                    !isLastChild ? actionButtonFirst : marginRight
+                  )}
+                >
+                  <ArrowUpward className={iconSmall} />
+                </Button>
+              </Tooltip>
+            )}
+            {!isLastChild && (
+              <Tooltip title="Переместить блок вниз">
+                <Button
+                  onClick={this.moveItemDown}
+                  size="small"
+                  variant="contained"
+                  className={classnames(
+                    actionButton,
+                    marginRight,
+                    !isFirstChild ? actionButtonLast : marginLeft
+                  )}
+                >
+                  <ArrowDownward className={iconSmall} />
+                </Button>
+              </Tooltip>
+            )}
+          </div>
+        </Zoom>
+      </Fragment>
     );
   }
 }
