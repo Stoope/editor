@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --watch-poll",
+    "start": "webpack-dev-server",
     "build": "webpack --config ./webpack.config.prod.js",
     "prebuild": "rm -rf dist/*",
     "test": "jest",
