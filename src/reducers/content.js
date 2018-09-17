@@ -18,16 +18,47 @@ const initialState = {
       xs: 12,
       content: [
         {
-          id: "cOao6IjvT5~uM6f15eyIm",
           type: "Grid",
+          id: "sy56mJNkLjPXTT0Rg3CcD",
           item: true,
-          xs: 6,
+          alignItems: "stretch",
+          justify: "flex-start",
+          xs: 4,
           content: [
             {
-              id: "LaxSiJvKkDt9K5LmDTVby",
-              height: 800,
               type: "TestPlugin",
-              uri: `https://cdn.theatlantic.com/assets/media/img/photo/2015/11/images-from-the-2016-sony-world-pho/s01_130921474920553591/main_1500.jpg`
+              height: 800,
+              uri:
+                "https://cdn.theatlantic.com/assets/media/img/photo/2015/11/images-from-the-2016-sony-world-pho/s01_130921474920553591/main_1500.jpg",
+              id: "H7wvKz4MGPLlOk5KxrCbY"
+            }
+          ]
+        },
+        {
+          type: "Grid",
+          id: "aSVZ6rCpeREBalCUDyG5j",
+          item: true,
+          alignItems: "stretch",
+          justify: "flex-start",
+          xs: 4,
+          content: [
+            { type: "TestPlugin2", height: 500, id: "ocQQUUWvxIKxJDaONYdaf" }
+          ]
+        },
+        {
+          type: "Grid",
+          id: "5prnqWD~TdNDTHFM_Tveh",
+          item: true,
+          alignItems: "stretch",
+          justify: "flex-start",
+          xs: 4,
+          content: [
+            {
+              type: "TestPlugin",
+              height: 800,
+              uri:
+                "https://cdn.theatlantic.com/assets/media/img/photo/2015/11/images-from-the-2016-sony-world-pho/s01_130921474920553591/main_1500.jpg",
+              id: "fZX7hfa71V~wJmO2jHsp8"
             }
           ]
         }
@@ -37,6 +68,7 @@ const initialState = {
 };
 
 const reducer = (state = initialState, { type, payload }) => {
+  console.log(JSON.stringify(state));
   switch (type) {
     case constants.REMOVE_EDITOR_CONTENT_ITEM:
       return {
