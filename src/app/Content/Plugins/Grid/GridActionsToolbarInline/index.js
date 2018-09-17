@@ -5,8 +5,8 @@ import Delete from "@material-ui/icons/Delete";
 import RemoveRedEyeOutlined from "@material-ui/icons/RemoveRedEyeOutlined";
 import RemoveRedEye from "@material-ui/icons/RemoveRedEye";
 import FileCopy from "@material-ui/icons/FileCopy";
-import ArrowDownward from "@material-ui/icons/ArrowDownward";
-import ArrowUpward from "@material-ui/icons/ArrowUpward";
+import ArrowForward from "@material-ui/icons/ArrowForward";
+import ArrowBack from "@material-ui/icons/ArrowBack";
 import Settings from "@material-ui/icons/Settings";
 import Zoom from "@material-ui/core/Zoom";
 import classnames from "classnames";
@@ -303,7 +303,7 @@ class GridActionsToolbarInline extends React.Component {
                     !isLastChild ? actionButtonFirst : marginRight
                   )}
                 >
-                  <ArrowUpward className={iconSmall} />
+                  <ArrowBack className={iconSmall} />
                 </Button>
               </Tooltip>
             )}
@@ -320,7 +320,7 @@ class GridActionsToolbarInline extends React.Component {
                     !isFirstChild ? actionButtonLast : marginLeft
                   )}
                 >
-                  <ArrowDownward className={iconSmall} />
+                  <ArrowForward className={iconSmall} />
                 </Button>
               </Tooltip>
             )}
