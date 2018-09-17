@@ -71,7 +71,7 @@ class GridComponent extends React.Component {
         ) : (
           children
         )}
-        {componentProps.container ? (
+        {componentProps.section ? (
           <Fragment>
             <GridActionsToolbar
               id={componentProps.id}
@@ -88,7 +88,7 @@ class GridComponent extends React.Component {
               componentProps={componentProps}
             />
           </Fragment>
-        ) : componentProps.item ? (
+        ) : (
           <Fragment>
             <GridActionsToolbarInline
               id={componentProps.id}
@@ -106,7 +106,7 @@ class GridComponent extends React.Component {
               componentProps={componentProps}
             />
           </Fragment>
-        ) : null}
+        )}
       </View.Component>
     );
   }
