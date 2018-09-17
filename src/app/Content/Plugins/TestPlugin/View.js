@@ -7,7 +7,7 @@ const styles = () => ({
   root: {
     flexGrow: 1,
     backgroundRepeat: "no-repeat",
-    backgroundSize: "cover"
+    backgroundSize: "contain"
   }
 });
 
@@ -15,7 +15,9 @@ const GridComponent = ({ classes: { root }, uri, height }) => (
   <div
     className={classNames(root)}
     style={{ backgroundImage: `url(${uri})`, height }}
-  />
+  >
+    CONTENT
+  </div>
 );
 
 export default {

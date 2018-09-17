@@ -36,9 +36,9 @@ const RenderChildren = ({ content, ...props }) =>
   Array.isArray(content)
     ? content.map((component, index, array) =>
         renderComponent(component, {
+          ...props,
           isFirstChild: index === 0,
-          isLastChild: index === array.length - 1,
-          ...props
+          isLastChild: index === array.length - 1
         })
       )
     : renderComponent(content, props);

@@ -46,6 +46,7 @@ const App = ({
       moveItemUp={moveItemUp}
       moveItemDown={moveItemDown}
       openAddBlockSidebar={openAddBlockSidebar}
+      resizeItems={resizeItems}
     />
     <AddBlockSidebar
       addBlock={addBlock}

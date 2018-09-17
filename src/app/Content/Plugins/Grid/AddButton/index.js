@@ -17,7 +17,7 @@ const styles = () => ({
   }
 });
 
-class GridActionsToolbar extends React.Component {
+class AddButton extends React.Component {
   addBlock = () => {
     const { openAddBlockSidebar, id } = this.props;
     if (openAddBlockSidebar != null) {
@@ -55,4 +55,4 @@ class GridActionsToolbar extends React.Component {
   }
 }
 
-export default withStyles(styles)(GridActionsToolbar);
+export default withStyles(styles)(AddButton);

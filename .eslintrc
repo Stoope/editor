@@ -13,6 +13,7 @@
     "lines-between-class-members": "off",
     "no-shadow": "off",
     "no-nested-ternary": "off",
+    "no-unused-expressions": "off",
     "import/prefer-default-export": "off",
     "class-methods-use-this": 0,
     "import/no-named-as-default": 0,

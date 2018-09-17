@@ -23,7 +23,7 @@ const SettingsSidebar = ({
     open={isOpen}
     onClose={onClose}
   >
-    <Grid container className={root}>
+    <Grid spacing={8} container className={root}>
       <Grid item xs={12}>
         <Typography variant="title" gutterBottom>
           {title}
