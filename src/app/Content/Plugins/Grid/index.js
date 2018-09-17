@@ -43,16 +43,16 @@ class GridComponent extends React.Component {
     const {
       isLastChild,
       children,
-      hidden,
+      componentProps,
       openAddBlockSidebar,
       classes: { dashedBorder, hiddenBlock, grid, dashedBorderHidden },
       ...props
     } = this.props;
     const { isHovered } = this.state;
-    const isItemHidden = Boolean(hidden);
+    const isItemHidden = Boolean(componentProps.hidden);
     return (
       <View.Component
-        {...props}
+        {...componentProps}
         onMouseEnter={this.onMouseEnter}
         onMouseLeave={this.onMouseLeave}
         className={classNames(

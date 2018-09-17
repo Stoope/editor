@@ -30,7 +30,7 @@ const initialState = {
       item: true,
       xs: 12,
       container: true,
-      content: "content3"
+      content: ["content3"]
     },
     {
       id: 88,

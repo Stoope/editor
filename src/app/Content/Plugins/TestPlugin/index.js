@@ -1,7 +1,7 @@
 import React from "react";
 import View from "./View";
 
-const TestPlugin = ({ uri, height }) => (
+const TestPlugin = ({ componentProps: { uri, height } }) => (
   <View.Component uri={uri} height={height} />
 );
 

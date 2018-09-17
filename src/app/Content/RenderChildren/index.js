@@ -20,7 +20,11 @@ const renderComponent = (component, props) => {
   );
   if (Component) {
     return (
-      <Component.Component {...component} {...props} key={component.id}>
+      <Component.Component
+        componentProps={component}
+        {...props}
+        key={component.id}
+      >
         <RenderChildren content={component.content} />
       </Component.Component>
     );
