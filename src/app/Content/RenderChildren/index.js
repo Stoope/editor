@@ -25,7 +25,7 @@ const renderComponent = (component, props) => {
         {...props}
         key={component.id}
       >
-        <RenderChildren content={component.content} />
+        <RenderChildren content={component.content} {...props} />
       </Component.Component>
     );
   }

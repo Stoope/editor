@@ -13,8 +13,9 @@ const styles = () => ({
 });
 
 const AddBlockSidebar = ({
-  addBlock: { isOpen, currentId, props },
+  addBlock: { isOpen, currentId, props, type },
   addItemAfter,
+  resizeItems,
   closeAddBlockSidebar,
   classes: { root }
 }) => (
@@ -34,6 +35,8 @@ const AddBlockSidebar = ({
                 addItemAfter={addItemAfter}
                 currentId={currentId}
                 props={props}
+                type={type}
+                resizeItems={resizeItems}
                 closeAddBlockSidebar={closeAddBlockSidebar}
                 item={item}
               />

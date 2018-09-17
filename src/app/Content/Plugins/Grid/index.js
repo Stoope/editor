@@ -1,10 +1,11 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import classNames from "classnames";
 import Typography from "@material-ui/core/Typography";
 import View from "./View";
 import GridActionsToolbar from "./GridActionsToolbar";
 import AddButton from "./AddButton";
+import AddButtonInline from "./AddButtonInline";
 
 const styles = () => ({
   dashedBorder: {
@@ -50,6 +51,7 @@ class GridComponent extends React.Component {
     } = this.props;
     const { isHovered } = this.state;
     const isItemHidden = Boolean(componentProps.hidden);
+
     return (
       <View.Component
         {...componentProps}
@@ -67,18 +69,32 @@ class GridComponent extends React.Component {
         ) : (
           children
         )}
-        <GridActionsToolbar
-          id={componentProps.id}
-          isItemHidden={isItemHidden}
-          display={isHovered}
-          isLastChild={isLastChild}
-          {...props}
-        />
-        <AddButton
-          display={isHovered}
-          openAddBlockSidebar={openAddBlockSidebar}
-          id={componentProps.id}
-        />
+        {componentProps.container ? (
+          <Fragment>
+            <GridActionsToolbar
+              id={componentProps.id}
+              isItemHidden={isItemHidden}
+              display={isHovered}
+              isLastChild={isLastChild}
+              {...props}
+            />
+            <AddButton
+              display={isHovered}
+              openAddBlockSidebar={openAddBlockSidebar}
+              id={componentProps.id}
+              componentProps={componentProps}
+            />
+          </Fragment>
+        ) : componentProps.item ? (
+          <Fragment>
+            <AddButtonInline
+              display={isHovered}
+              openAddBlockSidebar={openAddBlockSidebar}
+              id={componentProps.id}
+              componentProps={componentProps}
+            />
+          </Fragment>
+        ) : null}
       </View.Component>
     );
   }

@@ -536,4 +536,622 @@ describe("content reducer", () => {
       ]
     });
   });
+  it("should handle RESIZE_EDITOR_ITEMS_EQUAL", () => {
+    expect(
+      reducer(
+        {
+          content: [
+            {
+              id: 1,
+              type: "Grid",
+              xs: 12,
+              content: [
+                {
+                  type: "Grid",
+                  xs: 12,
+                  id: 4,
+                  content: [
+                    {
+                      id: 7
+                    }
+                  ]
+                },
+                {
+                  type: "Grid",
+                  xs: 12,
+                  id: 14,
+                  content: [
+                    {
+                      id: 7
+                    }
+                  ]
+                },
+                {
+                  type: "Grid",
+                  xs: 12,
+                  id: 24,
+                  content: [
+                    {
+                      id: 7
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          type: constants.RESIZE_EDITOR_ITEMS_EQUAL,
+          payload: 4
+        }
+      )
+    ).toMatchObject({
+      content: [
+        {
+          id: 1,
+          type: "Grid",
+          xs: 12,
+          content: [
+            {
+              type: "Grid",
+              xs: 4,
+              id: 4,
+              content: [
+                {
+                  id: 7
+                }
+              ]
+            },
+            {
+              type: "Grid",
+              xs: 4,
+              id: 14,
+              content: [
+                {
+                  id: 7
+                }
+              ]
+            },
+            {
+              type: "Grid",
+              xs: 4,
+              id: 24,
+              content: [
+                {
+                  id: 7
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    });
+  });
+  it("should handle RESIZE_EDITOR_ITEMS_EQUAL deep", () => {
+    expect(
+      reducer(
+        {
+          content: [
+            {
+              id: 10,
+              type: "Grid",
+              xs: 12,
+              content: [
+                {
+                  id: 1,
+                  type: "Grid",
+                  xs: 12,
+                  content: [
+                    {
+                      type: "Grid",
+                      xs: 12,
+                      id: 4,
+                      content: [
+                        {
+                          id: 7
+                        }
+                      ]
+                    },
+                    {
+                      type: "Grid",
+                      xs: 12,
+                      id: 14,
+                      content: [
+                        {
+                          id: 7
+                        }
+                      ]
+                    },
+                    {
+                      type: "Grid",
+                      xs: 12,
+                      id: 24,
+                      content: [
+                        {
+                          id: 7
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          type: constants.RESIZE_EDITOR_ITEMS_EQUAL,
+          payload: 4
+        }
+      )
+    ).toMatchObject({
+      content: [
+        {
+          id: 10,
+          type: "Grid",
+          xs: 12,
+          content: [
+            {
+              id: 1,
+              type: "Grid",
+              xs: 12,
+              content: [
+                {
+                  type: "Grid",
+                  xs: 4,
+                  id: 4,
+                  content: [
+                    {
+                      id: 7
+                    }
+                  ]
+                },
+                {
+                  type: "Grid",
+                  xs: 4,
+                  id: 14,
+                  content: [
+                    {
+                      id: 7
+                    }
+                  ]
+                },
+                {
+                  type: "Grid",
+                  xs: 4,
+                  id: 24,
+                  content: [
+                    {
+                      id: 7
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    });
+  });
+  it("should handle RESIZE_EDITOR_ITEMS_EQUAL more then 12 items", () => {
+    expect(
+      reducer(
+        {
+          content: [
+            {
+              id: 1,
+              type: "Grid",
+              xs: 12,
+              content: [
+                {
+                  type: "Grid",
+                  xs: 12,
+                  id: 4,
+                  content: [
+                    {
+                      id: 7
+                    }
+                  ]
+                },
+                {
+                  type: "Grid",
+                  xs: 12,
+                  id: 4,
+                  content: [
+                    {
+                      id: 7
+                    }
+                  ]
+                },
+                {
+                  type: "Grid",
+                  xs: 12,
+                  id: 4,
+                  content: [
+                    {
+                      id: 7
+                    }
+                  ]
+                },
+                {
+                  type: "Grid",
+                  xs: 12,
+                  id: 4,
+                  content: [
+                    {
+                      id: 7
+                    }
+                  ]
+                },
+                {
+                  type: "Grid",
+                  xs: 12,
+                  id: 4,
+                  content: [
+                    {
+                      id: 7
+                    }
+                  ]
+                },
+                {
+                  type: "Grid",
+                  xs: 12,
+                  id: 4,
+                  content: [
+                    {
+                      id: 7
+                    }
+                  ]
+                },
+                {
+                  type: "Grid",
+                  xs: 12,
+                  id: 4,
+                  content: [
+                    {
+                      id: 7
+                    }
+                  ]
+                },
+                {
+                  type: "Grid",
+                  xs: 12,
+                  id: 4,
+                  content: [
+                    {
+                      id: 7
+                    }
+                  ]
+                },
+                {
+                  type: "Grid",
+                  xs: 12,
+                  id: 4,
+                  content: [
+                    {
+                      id: 7
+                    }
+                  ]
+                },
+                {
+                  type: "Grid",
+                  xs: 12,
+                  id: 4,
+                  content: [
+                    {
+                      id: 7
+                    }
+                  ]
+                },
+                {
+                  type: "Grid",
+                  xs: 12,
+                  id: 4,
+                  content: [
+                    {
+                      id: 7
+                    }
+                  ]
+                },
+                {
+                  type: "Grid",
+                  xs: 12,
+                  id: 4,
+                  content: [
+                    {
+                      id: 7
+                    }
+                  ]
+                },
+                {
+                  type: "Grid",
+                  xs: 12,
+                  id: 4,
+                  content: [
+                    {
+                      id: 7
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          type: constants.RESIZE_EDITOR_ITEMS_EQUAL,
+          payload: 4
+        }
+      )
+    ).toMatchObject({
+      content: [
+        {
+          id: 1,
+          type: "Grid",
+          xs: 12,
+          content: [
+            {
+              type: "Grid",
+              xs: 1,
+              id: 4,
+              content: [
+                {
+                  id: 7
+                }
+              ]
+            },
+            {
+              type: "Grid",
+              xs: 1,
+              id: 4,
+              content: [
+                {
+                  id: 7
+                }
+              ]
+            },
+            {
+              type: "Grid",
+              xs: 1,
+              id: 4,
+              content: [
+                {
+                  id: 7
+                }
+              ]
+            },
+            {
+              type: "Grid",
+              xs: 1,
+              id: 4,
+              content: [
+                {
+                  id: 7
+                }
+              ]
+            },
+            {
+              type: "Grid",
+              xs: 1,
+              id: 4,
+              content: [
+                {
+                  id: 7
+                }
+              ]
+            },
+            {
+              type: "Grid",
+              xs: 1,
+              id: 4,
+              content: [
+                {
+                  id: 7
+                }
+              ]
+            },
+            {
+              type: "Grid",
+              xs: 1,
+              id: 4,
+              content: [
+                {
+                  id: 7
+                }
+              ]
+            },
+            {
+              type: "Grid",
+              xs: 1,
+              id: 4,
+              content: [
+                {
+                  id: 7
+                }
+              ]
+            },
+            {
+              type: "Grid",
+              xs: 1,
+              id: 4,
+              content: [
+                {
+                  id: 7
+                }
+              ]
+            },
+            {
+              type: "Grid",
+              xs: 1,
+              id: 4,
+              content: [
+                {
+                  id: 7
+                }
+              ]
+            },
+            {
+              type: "Grid",
+              xs: 1,
+              id: 4,
+              content: [
+                {
+                  id: 7
+                }
+              ]
+            },
+            {
+              type: "Grid",
+              xs: 1,
+              id: 4,
+              content: [
+                {
+                  id: 7
+                }
+              ]
+            },
+            {
+              type: "Grid",
+              xs: 1,
+              id: 4,
+              content: [
+                {
+                  id: 7
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    });
+  });
+  it("should handle RESIZE_EDITOR_ITEMS_EQUAL not equal", () => {
+    expect(
+      reducer(
+        {
+          content: [
+            {
+              id: 1,
+              type: "Grid",
+              xs: 12,
+              content: [
+                {
+                  type: "Grid",
+                  xs: 12,
+                  id: 4,
+                  content: [
+                    {
+                      id: 7
+                    }
+                  ]
+                },
+                {
+                  type: "Grid",
+                  xs: 12,
+                  id: 14,
+                  content: [
+                    {
+                      id: 7
+                    }
+                  ]
+                },
+                {
+                  type: "Grid",
+                  xs: 12,
+                  id: 24,
+                  content: [
+                    {
+                      id: 7
+                    }
+                  ]
+                },
+                {
+                  type: "Grid",
+                  xs: 12,
+                  id: 14,
+                  content: [
+                    {
+                      id: 7
+                    }
+                  ]
+                },
+                {
+                  type: "Grid",
+                  xs: 12,
+                  id: 24,
+                  content: [
+                    {
+                      id: 7
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          type: constants.RESIZE_EDITOR_ITEMS_EQUAL,
+          payload: 4
+        }
+      )
+    ).toMatchObject({
+      content: [
+        {
+          id: 1,
+          type: "Grid",
+          xs: 12,
+          content: [
+            {
+              type: "Grid",
+              xs: 2,
+              id: 4,
+              content: [
+                {
+                  id: 7
+                }
+              ]
+            },
+            {
+              type: "Grid",
+              xs: 2,
+              id: 14,
+              content: [
+                {
+                  id: 7
+                }
+              ]
+            },
+            {
+              type: "Grid",
+              xs: 2,
+              id: 24,
+              content: [
+                {
+                  id: 7
+                }
+              ]
+            },
+            {
+              type: "Grid",
+              xs: 2,
+              id: 14,
+              content: [
+                {
+                  id: 7
+                }
+              ]
+            },
+            {
+              type: "Grid",
+              xs: 4,
+              id: 24,
+              content: [
+                {
+                  id: 7
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    });
+  });
 });

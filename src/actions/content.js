@@ -24,3 +24,7 @@ export const ADD_EDITOR_CONTENT_ITEM_AFTER = payload => ({
   type: constants.ADD_EDITOR_CONTENT_ITEM_AFTER,
   payload
 });
+export const RESIZE_EDITOR_ITEMS_EQUAL = payload => ({
+  type: constants.RESIZE_EDITOR_ITEMS_EQUAL,
+  payload
+});

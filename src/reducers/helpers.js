@@ -169,3 +169,40 @@ export const addItemAfterById = (props, content) => {
   }
   return content;
 };
+export const resizeItemsById = (id, content) => {
+  if (Array.isArray(content)) {
+    if (content.find(element => element.id === id)) {
+      const itemsCount = content.length;
+      const itemSize = 12 / itemsCount > 1 ? Math.floor(12 / itemsCount) : 1;
+      const rest = 12 % (itemsCount % 12);
+      return content.map(
+        (element, index) =>
+          index === itemsCount - 1
+            ? { ...element, xs: itemSize + rest }
+            : { ...element, xs: itemSize }
+      );
+    }
+    return content.map(element => resizeItemsById(id, element));
+  }
+  if (content && Array.isArray(content.content)) {
+    if (content.content.find(element => element.id === id)) {
+      const itemsCount = content.content.length;
+      const itemSize = 12 / itemsCount > 1 ? Math.floor(12 / itemsCount) : 1;
+      const rest = 12 % (itemsCount % 12);
+      return {
+        ...content,
+        content: content.content.map(
+          (element, index) =>
+            index === itemsCount - 1
+              ? { ...element, xs: itemSize + rest }
+              : { ...element, xs: itemSize }
+        )
+      };
+    }
+    return {
+      ...content,
+      content: content.content.map(element => resizeItemsById(id, element))
+    };
+  }
+  return content;
+};

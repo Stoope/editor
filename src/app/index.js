@@ -11,7 +11,8 @@ import {
   MOVE_EDITOR_CONTENT_ITEM_DOWN,
   OPEN_EDITOR_ADD_BLOCK,
   CLOSE_EDITOR_ADD_BLOCK,
-  ADD_EDITOR_CONTENT_ITEM_AFTER
+  ADD_EDITOR_CONTENT_ITEM_AFTER,
+  RESIZE_EDITOR_ITEMS_EQUAL
 } from "@/actions";
 
 const styles = () => ({
@@ -33,7 +34,8 @@ const App = ({
   content,
   addBlock,
   closeAddBlockSidebar,
-  addItemAfter
+  addItemAfter,
+  resizeItems
 }) => (
   <div className={root}>
     <Content
@@ -49,6 +51,7 @@ const App = ({
       addBlock={addBlock}
       closeAddBlockSidebar={closeAddBlockSidebar}
       addItemAfter={addItemAfter}
+      resizeItems={resizeItems}
     />
   </div>
 );
@@ -68,6 +71,7 @@ export default connect(
     moveItemDown: MOVE_EDITOR_CONTENT_ITEM_DOWN,
     openAddBlockSidebar: OPEN_EDITOR_ADD_BLOCK,
     closeAddBlockSidebar: CLOSE_EDITOR_ADD_BLOCK,
-    addItemAfter: ADD_EDITOR_CONTENT_ITEM_AFTER
+    addItemAfter: ADD_EDITOR_CONTENT_ITEM_AFTER,
+    resizeItems: RESIZE_EDITOR_ITEMS_EQUAL
   }
 )(withStyles(styles)(App));

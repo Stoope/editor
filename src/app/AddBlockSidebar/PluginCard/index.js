@@ -24,24 +24,54 @@ class AddBlockSidebar extends React.Component {
   addBlock = () => {
     const {
       addItemAfter,
+      resizeItems,
       item: { defaultState },
       closeAddBlockSidebar,
       currentId,
+      type,
       props
     } = this.props;
 
     if (addItemAfter != null) {
-      addItemAfter({
-        id: currentId,
-        content: {
-          type: "Grid",
-          id: nanoid(),
-          ...props,
-          content: Array.isArray(defaultState)
-            ? defaultState.map(item => ({ ...item, id: nanoid() }))
-            : { ...defaultState, id: nanoid() }
+      if (type === "item") {
+        addItemAfter({
+          id: currentId,
+          content: {
+            type: "Grid",
+            id: nanoid(),
+            item: true,
+            ...props,
+            content: Array.isArray(defaultState)
+              ? defaultState.map(item => ({ ...item, id: nanoid() }))
+              : [{ ...defaultState, id: nanoid() }]
+          }
+        });
+        if (resizeItems != null) {
+          resizeItems(currentId);
         }
-      });
+      } else if (type === "container") {
+        addItemAfter({
+          id: currentId,
+          content: {
+            type: "Grid",
+            id: nanoid(),
+            item: true,
+            container: true,
+            xs: 12,
+            content: [
+              {
+                type: "Grid",
+                id: nanoid(),
+                item: true,
+                ...props,
+                content: Array.isArray(defaultState)
+                  ? defaultState.map(item => ({ ...item, id: nanoid() }))
+                  : [{ ...defaultState, id: nanoid() }]
+              }
+            ]
+          }
+        });
+      }
       if (closeAddBlockSidebar != null) {
         closeAddBlockSidebar();
       }

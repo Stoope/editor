@@ -8,10 +8,8 @@ import Tooltip from "../Tooltip";
 const styles = () => ({
   root: {
     position: "absolute",
-    left: 0,
     right: 0,
-    bottom: -20,
-    margin: "0 auto",
+    top: "calc(100% / 2 - 20px)",
     zIndex: 1,
     width: 40
   }
@@ -20,13 +18,14 @@ const styles = () => ({
 class GridActionsToolbar extends React.Component {
   addBlock = () => {
     const { openAddBlockSidebar, id } = this.props;
+
     if (openAddBlockSidebar != null) {
       openAddBlockSidebar({
         id,
         props: {
-          xs: 12
+          xs: 6
         },
-        type: "container"
+        type: "item"
       });
     }
   };
@@ -42,7 +41,7 @@ class GridActionsToolbar extends React.Component {
             <Button
               onClick={this.addBlock}
               variant="fab"
-              color="primary"
+              color="secondary"
               mini
               aria-label="Add"
             >
