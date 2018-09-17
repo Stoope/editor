@@ -68,7 +68,7 @@ class GridComponent extends React.Component {
           children
         )}
         <GridActionsToolbar
-          id={props.id}
+          id={componentProps.id}
           isItemHidden={isItemHidden}
           display={isHovered}
           isLastChild={isLastChild}
@@ -77,7 +77,7 @@ class GridComponent extends React.Component {
         <AddButton
           display={isHovered}
           openAddBlockSidebar={openAddBlockSidebar}
-          id={props.id}
+          id={componentProps.id}
         />
       </View.Component>
     );

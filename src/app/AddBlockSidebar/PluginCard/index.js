@@ -38,8 +38,8 @@ class AddBlockSidebar extends React.Component {
           id: nanoid(),
           ...props,
           content: Array.isArray(defaultState)
-            ? { ...defaultState, id: nanoid() }
-            : defaultState.map(item => ({ ...item, id: nanoid() }))
+            ? defaultState.map(item => ({ ...item, id: nanoid() }))
+            : { ...defaultState, id: nanoid() }
         }
       });
       if (closeAddBlockSidebar != null) {
