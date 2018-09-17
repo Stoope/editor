@@ -38,13 +38,8 @@ export default {
   name: "Тестовый плагин 2",
   description: "Тестовый плагин для теста номер 2",
   defaultState: {
-    type: "Grid",
-    content: [
-      {
-        type: "TestPlugin2",
-        height: 500
-      }
-    ]
+    type: "TestPlugin2",
+    height: 500
   },
   preview
 };

@@ -10,14 +10,6 @@ import {
 const initialState = {
   content: [
     {
-      id: 1,
-      type: "Grid",
-      container: true,
-      item: true,
-      xs: 12,
-      content: "content1"
-    },
-    {
       id: 2,
       type: "Grid",
       container: true,
@@ -58,6 +50,7 @@ const initialState = {
 };
 
 const reducer = (state = initialState, { type, payload }) => {
+  console.log(state);
   switch (type) {
     case constants.REMOVE_EDITOR_CONTENT_ITEM:
       return {

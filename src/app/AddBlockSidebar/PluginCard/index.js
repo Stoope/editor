@@ -34,15 +34,12 @@ class AddBlockSidebar extends React.Component {
       addItemAfter({
         id: currentId,
         content: {
-          ...defaultState,
+          type: "Grid",
           id: nanoid(),
           ...props,
-          content:
-            defaultState.content == null
-              ? defaultState.content
-              : Array.isArray(defaultState.content)
-                ? defaultState.content.map(item => ({ ...item, id: nanoid() }))
-                : { ...defaultState.content, id: nanoid() }
+          content: Array.isArray(defaultState)
+            ? { ...defaultState, id: nanoid() }
+            : defaultState.map(item => ({ ...item, id: nanoid() }))
         }
       });
       if (closeAddBlockSidebar != null) {

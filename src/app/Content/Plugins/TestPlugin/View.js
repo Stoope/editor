@@ -24,14 +24,9 @@ export default {
   name: "Тестовый плагин",
   description: "Тестовый плагин для теста",
   defaultState: {
-    type: "Grid",
-    content: [
-      {
-        type: "TestPlugin",
-        height: 800,
-        uri: `https://cdn.theatlantic.com/assets/media/img/photo/2015/11/images-from-the-2016-sony-world-pho/s01_130921474920553591/main_1500.jpg`
-      }
-    ]
+    type: "TestPlugin",
+    height: 800,
+    uri: `https://cdn.theatlantic.com/assets/media/img/photo/2015/11/images-from-the-2016-sony-world-pho/s01_130921474920553591/main_1500.jpg`
   },
   preview
 };

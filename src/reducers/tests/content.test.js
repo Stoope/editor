@@ -8,24 +8,28 @@ const initialState = {
       content: [
         {
           id: 4,
-          content: "content4"
+          content: [
+            {
+              id: 7
+            },
+            {
+              id: 8
+            }
+          ]
         }
       ]
     },
     {
-      id: 2,
-      content: "content2"
+      id: 2
     },
     {
       id: 3,
       content: [
         {
-          id: 5,
-          content: "content5"
+          id: 5
         },
         {
-          id: 6,
-          content: "content6"
+          id: 6
         }
       ]
     }
@@ -42,19 +46,16 @@ describe("content reducer", () => {
     ).toMatchObject({
       content: [
         {
-          id: 2,
-          content: "content2"
+          id: 2
         },
         {
           id: 3,
           content: [
             {
-              id: 5,
-              content: "content5"
+              id: 5
             },
             {
-              id: 6,
-              content: "content6"
+              id: 6
             }
           ]
         }
@@ -65,7 +66,7 @@ describe("content reducer", () => {
     expect(
       reducer(initialState, {
         type: constants.REMOVE_EDITOR_CONTENT_ITEM,
-        payload: 5
+        payload: 7
       })
     ).toMatchObject({
       content: [
@@ -74,20 +75,25 @@ describe("content reducer", () => {
           content: [
             {
               id: 4,
-              content: "content4"
+              content: [
+                {
+                  id: 8
+                }
+              ]
             }
           ]
         },
         {
-          id: 2,
-          content: "content2"
+          id: 2
         },
         {
           id: 3,
           content: [
             {
-              id: 6,
-              content: "content6"
+              id: 5
+            },
+            {
+              id: 6
             }
           ]
         }
@@ -111,24 +117,28 @@ describe("content reducer", () => {
           content: [
             {
               id: 4,
-              content: "content4"
+              content: [
+                {
+                  id: 7
+                },
+                {
+                  id: 8
+                }
+              ]
             }
           ]
         },
         {
-          id: 2,
-          content: "content2"
+          id: 2
         },
         {
           id: 3,
           content: [
             {
-              id: 5,
-              content: "content5"
+              id: 5
             },
             {
-              id: 6,
-              content: "content6"
+              id: 6
             }
           ]
         }
@@ -140,7 +150,7 @@ describe("content reducer", () => {
       reducer(initialState, {
         type: constants.CHANGE_EDITOR_CONTENT_ITEM,
         payload: {
-          id: 5,
+          id: 8,
           test: true
         }
       })
@@ -151,25 +161,29 @@ describe("content reducer", () => {
           content: [
             {
               id: 4,
-              content: "content4"
+              content: [
+                {
+                  id: 7
+                },
+                {
+                  id: 8,
+                  test: true
+                }
+              ]
             }
           ]
         },
         {
-          id: 2,
-          content: "content2"
+          id: 2
         },
         {
           id: 3,
           content: [
             {
-              id: 5,
-              test: true,
-              content: "content5"
+              id: 5
             },
             {
-              id: 6,
-              content: "content6"
+              id: 6
             }
           ]
         }
@@ -189,7 +203,14 @@ describe("content reducer", () => {
           content: [
             {
               id: 4,
-              content: "content4"
+              content: [
+                {
+                  id: 7
+                },
+                {
+                  id: 8
+                }
+              ]
             }
           ]
         },
@@ -197,24 +218,28 @@ describe("content reducer", () => {
           content: [
             {
               id: 4,
-              content: "content4"
+              content: [
+                {
+                  id: 7
+                },
+                {
+                  id: 8
+                }
+              ]
             }
           ]
         },
         {
-          id: 2,
-          content: "content2"
+          id: 2
         },
         {
           id: 3,
           content: [
             {
-              id: 5,
-              content: "content5"
+              id: 5
             },
             {
-              id: 6,
-              content: "content6"
+              id: 6
             }
           ]
         }
@@ -225,7 +250,7 @@ describe("content reducer", () => {
     expect(
       reducer(initialState, {
         type: constants.COPY_EDITOR_CONTENT_ITEM,
-        payload: 5
+        payload: 7
       })
     ).toMatchObject({
       content: [
@@ -234,27 +259,29 @@ describe("content reducer", () => {
           content: [
             {
               id: 4,
-              content: "content4"
+              content: [
+                {
+                  id: 7
+                },
+                {},
+                {
+                  id: 8
+                }
+              ]
             }
           ]
         },
         {
-          id: 2,
-          content: "content2"
+          id: 2
         },
         {
           id: 3,
           content: [
             {
-              id: 5,
-              content: "content5"
+              id: 5
             },
             {
-              content: "content5"
-            },
-            {
-              id: 6,
-              content: "content6"
+              id: 6
             }
           ]
         }
@@ -270,15 +297,21 @@ describe("content reducer", () => {
     ).toMatchObject({
       content: [
         {
-          id: 2,
-          content: "content2"
+          id: 2
         },
         {
           id: 1,
           content: [
             {
               id: 4,
-              content: "content4"
+              content: [
+                {
+                  id: 7
+                },
+                {
+                  id: 8
+                }
+              ]
             }
           ]
         },
@@ -286,12 +319,10 @@ describe("content reducer", () => {
           id: 3,
           content: [
             {
-              id: 5,
-              content: "content5"
+              id: 5
             },
             {
-              id: 6,
-              content: "content6"
+              id: 6
             }
           ]
         }
@@ -302,7 +333,7 @@ describe("content reducer", () => {
     expect(
       reducer(initialState, {
         type: constants.MOVE_EDITOR_CONTENT_ITEM_UP,
-        payload: 6
+        payload: 8
       })
     ).toMatchObject({
       content: [
@@ -311,24 +342,28 @@ describe("content reducer", () => {
           content: [
             {
               id: 4,
-              content: "content4"
+              content: [
+                {
+                  id: 8
+                },
+                {
+                  id: 7
+                }
+              ]
             }
           ]
         },
         {
-          id: 2,
-          content: "content2"
+          id: 2
         },
         {
           id: 3,
           content: [
             {
-              id: 6,
-              content: "content6"
+              id: 5
             },
             {
-              id: 5,
-              content: "content5"
+              id: 6
             }
           ]
         }
@@ -339,20 +374,23 @@ describe("content reducer", () => {
     expect(
       reducer(initialState, {
         type: constants.MOVE_EDITOR_CONTENT_ITEM_DOWN,
-        payload: 1
+        payload: 2
       })
     ).toMatchObject({
       content: [
-        {
-          id: 2,
-          content: "content2"
-        },
         {
           id: 1,
           content: [
             {
               id: 4,
-              content: "content4"
+              content: [
+                {
+                  id: 7
+                },
+                {
+                  id: 8
+                }
+              ]
             }
           ]
         },
@@ -360,14 +398,15 @@ describe("content reducer", () => {
           id: 3,
           content: [
             {
-              id: 5,
-              content: "content5"
+              id: 5
             },
             {
-              id: 6,
-              content: "content6"
+              id: 6
             }
           ]
+        },
+        {
+          id: 2
         }
       ]
     });
@@ -376,7 +415,7 @@ describe("content reducer", () => {
     expect(
       reducer(initialState, {
         type: constants.MOVE_EDITOR_CONTENT_ITEM_DOWN,
-        payload: 5
+        payload: 7
       })
     ).toMatchObject({
       content: [
@@ -385,24 +424,28 @@ describe("content reducer", () => {
           content: [
             {
               id: 4,
-              content: "content4"
+              content: [
+                {
+                  id: 8
+                },
+                {
+                  id: 7
+                }
+              ]
             }
           ]
         },
         {
-          id: 2,
-          content: "content2"
+          id: 2
         },
         {
           id: 3,
           content: [
             {
-              id: 6,
-              content: "content6"
+              id: 5
             },
             {
-              id: 5,
-              content: "content5"
+              id: 6
             }
           ]
         }
@@ -413,7 +456,7 @@ describe("content reducer", () => {
     expect(
       reducer(initialState, {
         type: constants.ADD_EDITOR_CONTENT_ITEM_AFTER,
-        payload: { id: 1, content: { content: "content7" } }
+        payload: { id: 1, content: { test: "test" } }
       })
     ).toMatchObject({
       content: [
@@ -422,27 +465,29 @@ describe("content reducer", () => {
           content: [
             {
               id: 4,
-              content: "content4"
+              content: [
+                {
+                  id: 7
+                },
+                {
+                  id: 8
+                }
+              ]
             }
           ]
         },
+        { test: "test" },
         {
-          content: "content7"
-        },
-        {
-          id: 2,
-          content: "content2"
+          id: 2
         },
         {
           id: 3,
           content: [
             {
-              id: 5,
-              content: "content5"
+              id: 5
             },
             {
-              id: 6,
-              content: "content6"
+              id: 6
             }
           ]
         }
@@ -453,7 +498,7 @@ describe("content reducer", () => {
     expect(
       reducer(initialState, {
         type: constants.ADD_EDITOR_CONTENT_ITEM_AFTER,
-        payload: { id: 5, content: { content: "content7" } }
+        payload: { id: 7, content: { test: "test" } }
       })
     ).toMatchObject({
       content: [
@@ -462,27 +507,29 @@ describe("content reducer", () => {
           content: [
             {
               id: 4,
-              content: "content4"
+              content: [
+                {
+                  id: 7
+                },
+                { test: "test" },
+                {
+                  id: 8
+                }
+              ]
             }
           ]
         },
         {
-          id: 2,
-          content: "content2"
+          id: 2
         },
         {
           id: 3,
           content: [
             {
-              id: 5,
-              content: "content5"
+              id: 5
             },
             {
-              content: "content7"
-            },
-            {
-              id: 6,
-              content: "content6"
+              id: 6
             }
           ]
         }
