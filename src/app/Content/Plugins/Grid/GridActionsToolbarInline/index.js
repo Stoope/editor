@@ -13,7 +13,9 @@ import classnames from "classnames";
 import SettingsSidebar from "@/app/SettingsSidebar";
 import TextField from "@material-ui/core/TextField";
 import ColorPicker from "@/app/SettingsHelpers/ColorPicker";
+import InputAdornment from "@material-ui/core/InputAdornment";
 import MenuItem from "@material-ui/core/MenuItem";
+import Grid from "@material-ui/core/Grid";
 import Tooltip from "../Tooltip";
 
 const styles = () => ({
@@ -96,7 +98,14 @@ class GridActionsToolbarInline extends React.Component {
       isItemHidden,
       isFirstChild,
       isLastChild,
-      componentProps: { color, alignItems, justify, xs }
+      componentProps: {
+        color,
+        alignItems,
+        justify,
+        xs,
+        paddingTop,
+        paddingBottom
+      }
     } = this.props;
     const { isSettingsOpen } = this.state;
     return (
@@ -186,6 +195,38 @@ class GridActionsToolbarInline extends React.Component {
               </MenuItem>
             ))}
           </TextField>
+          <Grid spacing={8} item container xs={12}>
+            <Grid item xs={6}>
+              <TextField
+                fullWidth
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">px</InputAdornment>
+                  )
+                }}
+                label="Отступ сверху"
+                value={paddingTop}
+                onChange={event =>
+                  this.changeItem({ paddingTop: +event.target.value || 0 })
+                }
+              />
+            </Grid>
+            <Grid item xs={6}>
+              <TextField
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">px</InputAdornment>
+                  )
+                }}
+                fullWidth
+                label="Отступ снизу"
+                value={paddingBottom}
+                onChange={event =>
+                  this.changeItem({ paddingBottom: +event.target.value || 0 })
+                }
+              />
+            </Grid>
+          </Grid>
         </SettingsSidebar>
         <Zoom unmountOnExit in={display}>
           <div className={root}>

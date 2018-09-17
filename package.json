@@ -41,7 +41,6 @@
     "react": "^16.5.0",
     "react-color": "^2.14.1",
     "react-dom": "^16.5.0",
-    "react-hover-observer": "^2.1.1",
     "react-redux": "^5.0.7",
     "redux": "^4.0.0",
     "serve": "^10.0.0",

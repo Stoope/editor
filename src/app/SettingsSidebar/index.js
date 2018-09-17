@@ -6,7 +6,8 @@ import Drawer from "@material-ui/core/Drawer";
 
 const styles = () => ({
   root: {
-    padding: 16
+    padding: 16,
+    maxWidth: 400
   }
 });
 

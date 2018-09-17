@@ -43,7 +43,7 @@ class ColorPicker extends React.Component {
   render() {
     const {
       color = "",
-      label = "Цвет",
+      label = "Цвет фона",
       classes: { root, textField }
     } = this.props;
     const { anchorEl } = this.state;

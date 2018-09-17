@@ -2,7 +2,6 @@ import React, { Fragment } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import classNames from "classnames";
 import Typography from "@material-ui/core/Typography";
-import ReactHoverObserver from "react-hover-observer";
 import View from "./View";
 import GridActionsToolbar from "./GridActionsToolbar";
 import AddButton from "./AddButton";
@@ -30,6 +29,8 @@ const styles = () => ({
 
 class GridComponent extends React.Component {
   state = { isHovered: false };
+  onMouseEnter = () => this.setState({ isHovered: true });
+  onMouseLeave = () => this.setState({ isHovered: false });
   onHoverChanged = ({ isHovering }) => this.setState({ isHovered: isHovering });
   getAddButtonPositionClass = () => {
     const {
@@ -57,8 +58,9 @@ class GridComponent extends React.Component {
     return (
       <View.Component
         {...componentProps}
+        onMouseEnter={this.onMouseEnter}
+        onMouseLeave={this.onMouseLeave}
         onHoverChanged={this.onHoverChanged}
-        component={ReactHoverObserver}
         className={classNames(
           grid,
           isHovered ? dashedBorder : dashedBorderHidden
