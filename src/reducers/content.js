@@ -11,34 +11,16 @@ import {
 const initialState = {
   content: [
     {
-      id: "qmAHBOyA1MSvQ2O7Gv01U",
       type: "Grid",
-      container: true,
+      id: "nUqvHkjAwETVlk1wMwYGz",
       item: true,
-      section: true,
+      container: true,
       xs: 12,
+      section: true,
       content: [
         {
           type: "Grid",
-          id: "sy56mJNkLjPXTT0Rg3CcD",
-          item: true,
-          container: true,
-          alignItems: "stretch",
-          justify: "flex-start",
-          xs: 3,
-          content: [
-            {
-              type: "TestPlugin",
-              height: 800,
-              uri:
-                "https://cdn.theatlantic.com/assets/media/img/photo/2015/11/images-from-the-2016-sony-world-pho/s01_130921474920553591/main_1500.jpg",
-              id: "H7wvKz4MGPLlOk5KxrCbY"
-            }
-          ]
-        },
-        {
-          type: "Grid",
-          id: "j84OsY1Tsh9vEgeSxHnAb",
+          id: "Tra6yKExlRqQ9~pss~G_W",
           item: true,
           container: true,
           alignItems: "center",
@@ -46,34 +28,41 @@ const initialState = {
           xs: 3,
           content: [
             {
-              type: "ButtonPlugin",
-              text: "Кнопка",
-              variant: "contained",
-              id: "eeOm2zwKtVI_S2MbYElyB"
-            }
-          ]
-        },
-        {
-          type: "Grid",
-          id: "5prnqWD~TdNDTHFM_Tveh",
-          item: true,
-          container: true,
-          alignItems: "stretch",
-          justify: "flex-start",
-          xs: 3,
-          content: [
-            {
               type: "TestPlugin",
               height: 800,
               uri:
                 "https://cdn.theatlantic.com/assets/media/img/photo/2015/11/images-from-the-2016-sony-world-pho/s01_130921474920553591/main_1500.jpg",
-              id: "fZX7hfa71V~wJmO2jHsp8"
+              id: "~BkjpncjIDsH2GKOfF6~Z"
             }
           ]
         },
         {
           type: "Grid",
-          id: "HxS~MQ0quAF99zorfTqUK",
+          id: "y~AKE9HdjTkm1qm46tCLB",
+          item: true,
+          container: true,
+          alignItems: "center",
+          justify: "center",
+          xs: 2,
+          content: [
+            {
+              type: "ButtonPlugin",
+              text: "Открыть СиБиЭс",
+              variant: "contained",
+              borderRadiusType: "px",
+              borderRadius: 10,
+              backgroundColor: "#0a7ac9",
+              href: "https://cbsmba.com/",
+              target: "_blank",
+              disableRipple: false,
+              fontSize: 30,
+              id: "_uRQKTVRjV3p9KGtQe5cu"
+            }
+          ]
+        },
+        {
+          type: "Grid",
+          id: "Y3jtDw_xny8QK5UITS~Lu",
           item: true,
           container: true,
           alignItems: "center",
@@ -81,10 +70,81 @@ const initialState = {
           xs: 3,
           content: [
             {
+              type: "TestPlugin",
+              height: 800,
+              uri:
+                "https://cdn.theatlantic.com/assets/media/img/photo/2015/11/images-from-the-2016-sony-world-pho/s01_130921474920553591/main_1500.jpg",
+              id: "ZK3hPlzrJeWIhJpHZiBGx"
+            }
+          ]
+        },
+        {
+          type: "Grid",
+          id: "IV3g1Nm0xnJ0I3l5KJ9gZ",
+          item: true,
+          container: true,
+          alignItems: "flex-end",
+          justify: "flex-start",
+          xs: 4,
+          content: [
+            {
               type: "ButtonPlugin",
-              text: "Кнопка",
-              variant: "contained",
-              id: "XD5IjUdTMDrsE6Yb7oOlb"
+              text: "Еще кнопка",
+              variant: "flat",
+              borderRadiusType: "%",
+              borderRadius: 50,
+              backgroundColor: "#00ff22",
+              href: "",
+              target: "_blank",
+              disableRipple: false,
+              fontSize: 20,
+              id: "UHwoPzQG6o3cObd~ZbhTy"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      type: "Grid",
+      id: "2S9to3Ad8vmtymZRNDSyM",
+      item: true,
+      container: true,
+      xs: 12,
+      section: true,
+      content: [
+        {
+          type: "Grid",
+          id: "y_Xha2zEYd1wf7~mV0WFP",
+          item: true,
+          container: true,
+          alignItems: "center",
+          justify: "center",
+          xs: 6,
+          content: [
+            {
+              type: "TestPlugin",
+              height: 800,
+              uri:
+                "https://cdn.theatlantic.com/assets/media/img/photo/2015/11/images-from-the-2016-sony-world-pho/s01_130921474920553591/main_1500.jpg",
+              id: "pF69wTVUu_321tfP9DkMP"
+            }
+          ]
+        },
+        {
+          type: "Grid",
+          id: "Eb8CAxBvqN_bUa0JuuRvL",
+          item: true,
+          container: true,
+          alignItems: "center",
+          justify: "center",
+          xs: 6,
+          content: [
+            {
+              type: "TestPlugin",
+              height: 800,
+              uri:
+                "https://cdn.theatlantic.com/assets/media/img/photo/2015/11/images-from-the-2016-sony-world-pho/s01_130921474920553591/main_1500.jpg",
+              id: "uKTRtRlsO7Qp9BysAl6jz"
             }
           ]
         }

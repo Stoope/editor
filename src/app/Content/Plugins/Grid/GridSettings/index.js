@@ -1,5 +1,6 @@
 import React from "react";
 import Typography from "@material-ui/core/Typography";
+import { withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import ColorPicker from "@/app/SettingsHelpers/ColorPicker";
 import SettingsSidebar from "@/app/SettingsSidebar";
@@ -7,10 +8,18 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 import MenuItem from "@material-ui/core/MenuItem";
 import Grid from "@material-ui/core/Grid";
 
+const styles = () => ({
+  grid: {
+    marginBottom: 16
+  }
+});
+
 const GridSettings = ({
   isSettingsOpen,
   closeSidebar,
   changeItem,
+  innerSettings,
+  classes: { grid },
   componentProps: {
     color,
     alignItems,
@@ -23,11 +32,9 @@ const GridSettings = ({
   }
 }) => (
   <SettingsSidebar isOpen={isSettingsOpen} onClose={closeSidebar}>
-    <Grid spacing={8} item container>
+    <Grid spacing={8} item container className={grid}>
       <Grid item xs={12}>
-        <Typography variant="title" gutterBottom>
-          Общие настройки
-        </Typography>
+        <Typography variant="title">Общие настройки</Typography>
       </Grid>
       <Grid item xs={12}>
         <ColorPicker onChange={color => changeItem({ color })} color={color} />
@@ -119,6 +126,7 @@ const GridSettings = ({
             endAdornment: <InputAdornment position="end">px</InputAdornment>
           }}
           label="Отступ сверху"
+          type="number"
           value={paddingTop}
           onChange={event =>
             changeItem({ paddingTop: +event.target.value || 0 })
@@ -132,6 +140,7 @@ const GridSettings = ({
           }}
           fullWidth
           label="Отступ снизу"
+          type="number"
           value={paddingBottom}
           onChange={event =>
             changeItem({ paddingBottom: +event.target.value || 0 })
@@ -145,6 +154,7 @@ const GridSettings = ({
             endAdornment: <InputAdornment position="end">px</InputAdornment>
           }}
           label="Отступ слева"
+          type="number"
           value={paddingLeft}
           onChange={event =>
             changeItem({ paddingLeft: +event.target.value || 0 })
@@ -158,6 +168,7 @@ const GridSettings = ({
           }}
           fullWidth
           label="Отступ вправа"
+          type="number"
           value={paddingRight}
           onChange={event =>
             changeItem({ paddingRight: +event.target.value || 0 })
@@ -165,7 +176,18 @@ const GridSettings = ({
         />
       </Grid>
     </Grid>
+    {innerSettings && (
+      <Grid spacing={8} item container className={grid}>
+        {innerSettings.map(({ Component, id, ...state }) => (
+          <Component
+            changeItem={props => changeItem({ ...props, id })}
+            key={id}
+            state={state}
+          />
+        ))}
+      </Grid>
+    )}
   </SettingsSidebar>
 );
 
-export default GridSettings;
+export default withStyles(styles)(GridSettings);

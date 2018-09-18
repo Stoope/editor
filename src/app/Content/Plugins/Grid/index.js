@@ -6,7 +6,6 @@ import View from "./View";
 import GridActionsToolbar from "./GridActionsToolbar";
 import AddButton from "./AddButton";
 import AddButtonInline from "./AddButtonInline";
-import GridActionsToolbarInline from "./GridActionsToolbarInline";
 
 const styles = () => ({
   dashedBorder: {
@@ -49,6 +48,7 @@ class GridComponent extends React.Component {
       componentProps: { section, ...componentProps },
       openAddBlockSidebar,
       resizeItems,
+      innerSettings,
       classes: { dashedBorder, hiddenBlock, grid, dashedBorderHidden },
       ...props
     } = this.props;
@@ -79,7 +79,10 @@ class GridComponent extends React.Component {
               isItemHidden={isItemHidden}
               display={isHovered}
               isLastChild={isLastChild}
+              resizeItems={resizeItems}
+              innerSettings={innerSettings}
               componentProps={componentProps}
+              isSection
               {...props}
             />
             <AddButton
@@ -91,13 +94,15 @@ class GridComponent extends React.Component {
           </Fragment>
         ) : (
           <Fragment>
-            <GridActionsToolbarInline
+            <GridActionsToolbar
               id={componentProps.id}
               isItemHidden={isItemHidden}
               display={isHovered}
               isLastChild={isLastChild}
               resizeItems={resizeItems}
+              innerSettings={innerSettings}
               componentProps={componentProps}
+              isSection={false}
               {...props}
             />
             <AddButtonInline
