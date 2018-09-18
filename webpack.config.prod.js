@@ -12,7 +12,9 @@ module.exports = {
   entry: path.join(__dirname, "src/index.js"),
   output: {
     path: path.join(__dirname, "dist"),
-    filename: "index.js"
+    filename: "static/js/[name].[chunkhash:8].js",
+    chunkFilename: "static/js/[name].[chunkhash:8].chunk.js",
+    publicPath: "/"
   },
   resolve: {
     extensions: [".js", ".jsx"],
@@ -73,7 +75,8 @@ module.exports = {
       minify: true
     }),
     new MiniCssExtractPlugin({
-      filename: "index.css"
+      filename: "static/css/[name].[contenthash:8].css",
+      chunkFilename: "static/css/[name].[contenthash:8].chunk.css"
     }),
     new CompressionPlugin({
       filename: "[path].gz[query]",
