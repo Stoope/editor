@@ -8,14 +8,22 @@ import AddButton from "./AddButton";
 import AddButtonInline from "./AddButtonInline";
 
 const styles = () => ({
-  dashedBorder: {
-    border: "2px dashed rgba(204, 204, 204, 1)"
+  rootHover: {
+    "&:hover $controls": {
+      display: "flex"
+    }
   },
-  dashedBorderHidden: {
-    border: "2px dashed rgba(204, 204, 204, 0)"
+  rootHoverSection: {
+    "&:hover $controlsSection": {
+      display: "flex"
+    }
   },
   grid: {
-    transition: "all 0.2s ease-out"
+    transition: "all 0.2s ease-out",
+    border: "2px dashed rgba(204, 204, 204, 0)",
+    "&:hover": {
+      border: "2px dashed rgba(204, 204, 204, 1)"
+    }
   },
   hiddenBlock: {
     display: "flex",
@@ -23,14 +31,12 @@ const styles = () => ({
     justifyContent: "center",
     alignItems: "center",
     height: "100%"
-  }
+  },
+  controls: { display: "none" },
+  controlsSection: { display: "none" }
 });
 
 class GridComponent extends React.Component {
-  state = { isHovered: false };
-  onMouseEnter = () => this.setState({ isHovered: true });
-  onMouseLeave = () => this.setState({ isHovered: false });
-  onHoverChanged = ({ isHovering }) => this.setState({ isHovered: isHovering });
   getAddButtonPositionClass = () => {
     const {
       isLastChild,
@@ -49,21 +55,22 @@ class GridComponent extends React.Component {
       openAddBlockSidebar,
       resizeItems,
       innerSettings,
-      classes: { dashedBorder, hiddenBlock, grid, dashedBorderHidden },
+      classes: {
+        rootHoverSection,
+        rootHover,
+        hiddenBlock,
+        grid,
+        controls,
+        controlsSection
+      },
       ...props
     } = this.props;
-    const { isHovered } = this.state;
     const isItemHidden = Boolean(componentProps.hidden);
 
     return (
       <View.Component
         {...componentProps}
-        onMouseEnter={this.onMouseEnter}
-        onMouseLeave={this.onMouseLeave}
-        className={classNames(
-          grid,
-          isHovered ? dashedBorder : dashedBorderHidden
-        )}
+        className={classNames(grid, section ? rootHoverSection : rootHover)}
       >
         {isItemHidden ? (
           <Typography className={hiddenBlock} variant="title">
@@ -77,16 +84,16 @@ class GridComponent extends React.Component {
             <GridActionsToolbar
               id={componentProps.id}
               isItemHidden={isItemHidden}
-              display={isHovered}
               isLastChild={isLastChild}
               resizeItems={resizeItems}
               innerSettings={innerSettings}
               componentProps={componentProps}
+              className={section ? controlsSection : controls}
               isSection
               {...props}
             />
             <AddButton
-              display={isHovered}
+              className={section ? controlsSection : controls}
               openAddBlockSidebar={openAddBlockSidebar}
               id={componentProps.id}
               componentProps={componentProps}
@@ -97,7 +104,7 @@ class GridComponent extends React.Component {
             <GridActionsToolbar
               id={componentProps.id}
               isItemHidden={isItemHidden}
-              display={isHovered}
+              className={section ? controlsSection : controls}
               isLastChild={isLastChild}
               resizeItems={resizeItems}
               innerSettings={innerSettings}
@@ -106,7 +113,7 @@ class GridComponent extends React.Component {
               {...props}
             />
             <AddButtonInline
-              display={isHovered}
+              className={section ? controlsSection : controls}
               openAddBlockSidebar={openAddBlockSidebar}
               id={componentProps.id}
               componentProps={componentProps}

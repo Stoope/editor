@@ -2,7 +2,7 @@ import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import AddIcon from "@material-ui/icons/Add";
-import Zoom from "@material-ui/core/Zoom";
+import classNames from "classnames";
 import Tooltip from "../Tooltip";
 
 const styles = () => ({
@@ -33,24 +33,22 @@ class AddButton extends React.Component {
   render() {
     const {
       classes: { root },
-      display
+      className
     } = this.props;
     return (
-      <Zoom unmountOnExit in={display}>
-        <div className={root}>
-          <Tooltip title="Добавить блок">
-            <Button
-              onClick={this.addBlock}
-              variant="fab"
-              color="primary"
-              mini
-              aria-label="Add"
-            >
-              <AddIcon />
-            </Button>
-          </Tooltip>
-        </div>
-      </Zoom>
+      <div className={classNames(root, className)}>
+        <Tooltip title="Добавить блок">
+          <Button
+            onClick={this.addBlock}
+            variant="fab"
+            color="primary"
+            mini
+            aria-label="Add"
+          >
+            <AddIcon />
+          </Button>
+        </Tooltip>
+      </div>
     );
   }
 }

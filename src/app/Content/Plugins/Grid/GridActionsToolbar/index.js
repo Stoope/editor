@@ -10,7 +10,6 @@ import ArrowBack from "@material-ui/icons/ArrowBack";
 import ArrowDownward from "@material-ui/icons/ArrowDownward";
 import ArrowUpward from "@material-ui/icons/ArrowUpward";
 import Settings from "@material-ui/icons/Settings";
-import Zoom from "@material-ui/core/Zoom";
 import Grid from "@material-ui/core/Grid";
 import classnames from "classnames";
 import GridSettings from "../GridSettings";
@@ -77,7 +76,7 @@ class GridActionsToolbar extends React.Component {
   render() {
     const {
       classes: { root, actionButton, iconSmall, rootSection, rootBlock },
-      display,
+      className,
       innerSettings,
       isItemHidden,
       isFirstChild,
@@ -96,122 +95,122 @@ class GridActionsToolbar extends React.Component {
           changeItem={this.changeItem}
           closeSidebar={this.closeSidebar}
         />
-        <Zoom unmountOnExit in={display}>
-          <Grid
-            spacing={8}
-            container
-            className={classnames(root, isSection ? rootSection : rootBlock)}
-          >
-            <Grid item xs="auto">
-              <Grid item container>
-                <Grid item xs="auto">
-                  <Tooltip title="Копировать блок">
-                    <Button
-                      onClick={this.copyItem}
-                      color={buttonColor}
-                      size="small"
-                      variant="contained"
-                      className={actionButton}
-                    >
-                      <FileCopy className={iconSmall} />
-                    </Button>
-                  </Tooltip>
-                </Grid>
-                <Grid item xs="auto">
-                  <Tooltip title="Настроить блок">
-                    <Button
-                      onClick={this.openSidebar}
-                      color={buttonColor}
-                      size="small"
-                      variant="contained"
-                      className={actionButton}
-                    >
-                      <Settings className={iconSmall} />
-                    </Button>
-                  </Tooltip>
-                </Grid>
-                <Grid item xs="auto">
-                  <Tooltip title="Удалить блок">
-                    <Button
-                      onClick={this.removeItem}
-                      color={buttonColor}
-                      size="small"
-                      variant="contained"
-                      className={actionButton}
-                    >
-                      <Delete className={iconSmall} />
-                    </Button>
-                  </Tooltip>
-                </Grid>
-                <Grid item xs="auto">
-                  <Tooltip
-                    title={isItemHidden ? "Показать блок" : "Скрыть блок"}
+        <Grid
+          spacing={8}
+          container
+          className={classnames(
+            root,
+            className,
+            isSection ? rootSection : rootBlock
+          )}
+        >
+          <Grid item xs="auto">
+            <Grid item container>
+              <Grid item xs="auto">
+                <Tooltip title="Копировать блок">
+                  <Button
+                    onClick={this.copyItem}
+                    color={buttonColor}
+                    size="small"
+                    variant="contained"
+                    className={actionButton}
                   >
+                    <FileCopy className={iconSmall} />
+                  </Button>
+                </Tooltip>
+              </Grid>
+              <Grid item xs="auto">
+                <Tooltip title="Настроить блок">
+                  <Button
+                    onClick={this.openSidebar}
+                    color={buttonColor}
+                    size="small"
+                    variant="contained"
+                    className={actionButton}
+                  >
+                    <Settings className={iconSmall} />
+                  </Button>
+                </Tooltip>
+              </Grid>
+              <Grid item xs="auto">
+                <Tooltip title="Удалить блок">
+                  <Button
+                    onClick={this.removeItem}
+                    color={buttonColor}
+                    size="small"
+                    variant="contained"
+                    className={actionButton}
+                  >
+                    <Delete className={iconSmall} />
+                  </Button>
+                </Tooltip>
+              </Grid>
+              <Grid item xs="auto">
+                <Tooltip title={isItemHidden ? "Показать блок" : "Скрыть блок"}>
+                  <Button
+                    onClick={() =>
+                      isItemHidden
+                        ? this.changeItem({ hidden: false })
+                        : this.changeItem({ hidden: true })
+                    }
+                    size="small"
+                    color={buttonColor}
+                    variant="contained"
+                    className={actionButton}
+                  >
+                    {isItemHidden ? (
+                      <RemoveRedEyeOutlined className={iconSmall} />
+                    ) : (
+                      <RemoveRedEye className={iconSmall} />
+                    )}
+                  </Button>
+                </Tooltip>
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid item xs="auto">
+            <Grid item container>
+              {!isFirstChild && (
+                <Grid item xs="auto">
+                  <Tooltip title="Переместить блок вверх">
                     <Button
-                      onClick={() =>
-                        isItemHidden
-                          ? this.changeItem({ hidden: false })
-                          : this.changeItem({ hidden: true })
-                      }
-                      size="small"
                       color={buttonColor}
+                      onClick={this.moveItemUp}
+                      size="small"
                       variant="contained"
                       className={actionButton}
                     >
-                      {isItemHidden ? (
-                        <RemoveRedEyeOutlined className={iconSmall} />
+                      {isSection ? (
+                        <ArrowUpward className={iconSmall} />
                       ) : (
-                        <RemoveRedEye className={iconSmall} />
+                        <ArrowBack className={iconSmall} />
                       )}
                     </Button>
                   </Tooltip>
                 </Grid>
-              </Grid>
-            </Grid>
-            <Grid item xs="auto">
-              <Grid item container>
-                {!isFirstChild && (
-                  <Grid item xs="auto">
-                    <Tooltip title="Переместить блок вверх">
-                      <Button
-                        color={buttonColor}
-                        onClick={this.moveItemUp}
-                        size="small"
-                        variant="contained"
-                        className={actionButton}
-                      >
-                        {isSection ? (
-                          <ArrowUpward className={iconSmall} />
-                        ) : (
-                          <ArrowBack className={iconSmall} />
-                        )}
-                      </Button>
-                    </Tooltip>
-                  </Grid>
-                )}
-                {!isLastChild && (
-                  <Grid item xs="auto">
-                    <Tooltip title="Переместить блок вниз">
-                      <Button
-                        color={buttonColor}
-                        onClick={this.moveItemDown}
-                        size="small"
-                        variant="contained"
-                        className={actionButton}
-                      >
-                        {isSection ? (
-                          <ArrowDownward className={iconSmall} />
-                        ) : (
-                          <ArrowForward className={iconSmall} />
-                        )}
-                      </Button>
-                    </Tooltip>
-                  </Grid>
-                )}
-              </Grid>
+              )}
+              {!isLastChild && (
+                <Grid item xs="auto">
+                  <Tooltip title="Переместить блок вниз">
+                    <Button
+                      color={buttonColor}
+                      onClick={this.moveItemDown}
+                      size="small"
+                      variant="contained"
+                      className={actionButton}
+                    >
+                      {isSection ? (
+                        <ArrowDownward className={iconSmall} />
+                      ) : (
+                        <ArrowForward className={iconSmall} />
+                      )}
+                    </Button>
+                  </Tooltip>
+                </Grid>
+              )}
             </Grid>
           </Grid>
-        </Zoom>
+        </Grid>
       </Fragment>
     );
   }
