@@ -43,8 +43,7 @@
     "react-dom": "^16.5.0",
     "react-redux": "^5.0.7",
     "redux": "^4.0.0",
-    "serve": "^10.0.0",
-    "typeface-roboto": "^0.0.54"
+    "serve": "^10.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",

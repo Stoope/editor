@@ -13,7 +13,14 @@ const styles = () => ({
     height: 140
   },
   cardActionArea: {
-    width: "100%"
+    width: "100%",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "stretch",
+    justifyContent: "flex-start"
+  },
+  root: {
+    width: 250
   },
   fullHeight: {
     height: "100%"
@@ -41,8 +48,8 @@ class AddBlockSidebar extends React.Component {
             id: nanoid(),
             item: true,
             container: true,
-            alignItems: "stretch",
-            justify: "flex-start",
+            alignItems: "center",
+            justify: "center",
             ...props,
             content: Array.isArray(defaultState)
               ? defaultState.map(item => ({ ...item, id: nanoid() }))
@@ -68,8 +75,8 @@ class AddBlockSidebar extends React.Component {
                 id: nanoid(),
                 item: true,
                 container: true,
-                alignItems: "stretch",
-                justify: "flex-start",
+                alignItems: "center",
+                justify: "center",
                 ...props,
                 content: Array.isArray(defaultState)
                   ? defaultState.map(item => ({ ...item, id: nanoid() }))
@@ -87,10 +94,10 @@ class AddBlockSidebar extends React.Component {
   render() {
     const {
       item: { preview, name, description },
-      classes: { media, cardActionArea, fullHeight }
+      classes: { media, cardActionArea, fullHeight, root }
     } = this.props;
     return (
-      <Card classes={{ root: fullHeight }}>
+      <Card classes={{ root: classnames(fullHeight, root) }}>
         <CardActionArea
           onClick={this.addBlock}
           className={classnames(cardActionArea, fullHeight)}

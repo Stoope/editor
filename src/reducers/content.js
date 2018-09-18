@@ -25,7 +25,7 @@ const initialState = {
           container: true,
           alignItems: "stretch",
           justify: "flex-start",
-          xs: 4,
+          xs: 3,
           content: [
             {
               type: "TestPlugin",
@@ -38,14 +38,19 @@ const initialState = {
         },
         {
           type: "Grid",
-          id: "aSVZ6rCpeREBalCUDyG5j",
+          id: "j84OsY1Tsh9vEgeSxHnAb",
           item: true,
           container: true,
-          alignItems: "stretch",
-          justify: "flex-start",
-          xs: 4,
+          alignItems: "center",
+          justify: "center",
+          xs: 3,
           content: [
-            { type: "TestPlugin2", height: 500, id: "ocQQUUWvxIKxJDaONYdaf" }
+            {
+              type: "ButtonPlugin",
+              text: "Кнопка",
+              variant: "contained",
+              id: "eeOm2zwKtVI_S2MbYElyB"
+            }
           ]
         },
         {
@@ -55,7 +60,7 @@ const initialState = {
           container: true,
           alignItems: "stretch",
           justify: "flex-start",
-          xs: 4,
+          xs: 3,
           content: [
             {
               type: "TestPlugin",
@@ -63,6 +68,23 @@ const initialState = {
               uri:
                 "https://cdn.theatlantic.com/assets/media/img/photo/2015/11/images-from-the-2016-sony-world-pho/s01_130921474920553591/main_1500.jpg",
               id: "fZX7hfa71V~wJmO2jHsp8"
+            }
+          ]
+        },
+        {
+          type: "Grid",
+          id: "HxS~MQ0quAF99zorfTqUK",
+          item: true,
+          container: true,
+          alignItems: "center",
+          justify: "center",
+          xs: 3,
+          content: [
+            {
+              type: "ButtonPlugin",
+              text: "Кнопка",
+              variant: "contained",
+              id: "XD5IjUdTMDrsE6Yb7oOlb"
             }
           ]
         }

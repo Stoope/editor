@@ -19,11 +19,19 @@ const GridComponent = ({
   hidden,
   paddingBottom,
   paddingTop,
+  paddingLeft,
+  paddingRight,
   ...props
 }) => (
   <Grid
     className={classNames(grid, className)}
-    style={{ backgroundColor: color, paddingBottom, paddingTop }}
+    style={{
+      backgroundColor: color,
+      paddingBottom,
+      paddingTop,
+      paddingLeft,
+      paddingRight
+    }}
     {...props}
   >
     {children}

@@ -11,8 +11,7 @@ import Settings from "@material-ui/icons/Settings";
 import Zoom from "@material-ui/core/Zoom";
 import classnames from "classnames";
 import Tooltip from "../Tooltip";
-import SettingsSidebar from "@/app/SettingsSidebar";
-import ColorPicker from "@/app/SettingsHelpers/ColorPicker";
+import GridSettings from "../GridSettings";
 
 const styles = () => ({
   root: {
@@ -65,17 +64,9 @@ class GridActionsToolbar extends React.Component {
     const { copyItem, id } = this.props;
     copyItem && copyItem(id);
   };
-  hideItem = () => {
+  changeItem = props => {
     const { changeItem, id } = this.props;
-    changeItem && changeItem({ id, hidden: true });
-  };
-  changeColor = color => {
-    const { changeItem, id } = this.props;
-    changeItem && changeItem({ id, color });
-  };
-  showItem = () => {
-    const { changeItem, id } = this.props;
-    changeItem && changeItem({ id, hidden: false });
+    changeItem && changeItem({ id, ...props });
   };
   moveItemUp = () => {
     const { moveItemUp, id } = this.props;
@@ -101,18 +92,17 @@ class GridActionsToolbar extends React.Component {
       isItemHidden,
       isFirstChild,
       isLastChild,
-      color
+      componentProps
     } = this.props;
     const { isSettingsOpen } = this.state;
     return (
       <Fragment>
-        <SettingsSidebar
-          title="Настройки секции"
-          isOpen={isSettingsOpen}
-          onClose={this.closeSidebar}
-        >
-          <ColorPicker onChange={this.changeColor} color={color} />
-        </SettingsSidebar>
+        <GridSettings
+          componentProps={componentProps}
+          isSettingsOpen={isSettingsOpen}
+          changeItem={this.changeItem}
+          closeSidebar={this.closeSidebar}
+        />
         <Zoom unmountOnExit in={display}>
           <div className={root}>
             <Tooltip title="Копировать блок">
@@ -151,7 +141,11 @@ class GridActionsToolbar extends React.Component {
             </Tooltip>
             <Tooltip title={isItemHidden ? "Показать блок" : "Скрыть блок"}>
               <Button
-                onClick={isItemHidden ? this.showItem : this.hideItem}
+                onClick={() =>
+                  isItemHidden
+                    ? this.changeItem({ hidden: false })
+                    : this.changeItem({ hidden: true })
+                }
                 size="small"
                 variant="contained"
                 className={classnames(

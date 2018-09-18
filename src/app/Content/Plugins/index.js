@@ -1,5 +1,5 @@
 import Grid from "./Grid";
 import TestPlugin from "./TestPlugin";
-import TestPlugin2 from "./TestPlugin2";
+import Button from "./Button";
 
-export { Grid, TestPlugin, TestPlugin2 };
+export { Grid, TestPlugin, Button };

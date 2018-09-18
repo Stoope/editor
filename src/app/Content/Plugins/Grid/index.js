@@ -46,7 +46,7 @@ class GridComponent extends React.Component {
     const {
       isLastChild,
       children,
-      componentProps,
+      componentProps: { section, ...componentProps },
       openAddBlockSidebar,
       resizeItems,
       classes: { dashedBorder, hiddenBlock, grid, dashedBorderHidden },
@@ -60,7 +60,6 @@ class GridComponent extends React.Component {
         {...componentProps}
         onMouseEnter={this.onMouseEnter}
         onMouseLeave={this.onMouseLeave}
-        onHoverChanged={this.onHoverChanged}
         className={classNames(
           grid,
           isHovered ? dashedBorder : dashedBorderHidden
@@ -73,7 +72,7 @@ class GridComponent extends React.Component {
         ) : (
           children
         )}
-        {componentProps.section ? (
+        {section ? (
           <Fragment>
             <GridActionsToolbar
               id={componentProps.id}

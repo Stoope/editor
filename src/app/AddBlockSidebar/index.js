@@ -30,7 +30,7 @@ const AddBlockSidebar = ({
         {Object.values(Plugins)
           .filter(item => item.id !== "Grid")
           .map(item => (
-            <Grid key={item.id} item xs={2}>
+            <Grid key={item.id} item xs="auto">
               <PluginCard
                 addItemAfter={addItemAfter}
                 currentId={currentId}
