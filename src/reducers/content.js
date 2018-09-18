@@ -154,7 +154,7 @@ const initialState = {
 };
 
 const reducer = (state = initialState, { type, payload }) => {
-  console.log(JSON.stringify(state));
+  // console.log(JSON.stringify(state));
   switch (type) {
     case constants.REMOVE_EDITOR_CONTENT_ITEM:
       return {
