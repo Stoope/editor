@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
+import Tooltip from "@material-ui/core/Tooltip";
 import Delete from "@material-ui/icons/Delete";
 import RemoveRedEyeOutlined from "@material-ui/icons/RemoveRedEyeOutlined";
 import RemoveRedEye from "@material-ui/icons/RemoveRedEye";
@@ -13,7 +14,6 @@ import Settings from "@material-ui/icons/Settings";
 import Grid from "@material-ui/core/Grid";
 import classnames from "classnames";
 import GridSettings from "../GridSettings";
-import Tooltip from "../Tooltip";
 
 const styles = () => ({
   root: {

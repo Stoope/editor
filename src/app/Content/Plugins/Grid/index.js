@@ -10,12 +10,14 @@ import AddButtonInline from "./AddButtonInline";
 const styles = () => ({
   rootHover: {
     "&:hover $controls": {
-      display: "flex"
+      visibility: "visible",
+      opacity: 1
     }
   },
   rootHoverSection: {
     "&:hover $controlsSection": {
-      display: "flex"
+      visibility: "visible",
+      opacity: 1
     }
   },
   grid: {
@@ -32,8 +34,16 @@ const styles = () => ({
     alignItems: "center",
     height: "100%"
   },
-  controls: { display: "none" },
-  controlsSection: { display: "none" }
+  controls: {
+    visibility: "hidden",
+    opacity: 0,
+    transition: "visibility 0s, opacity 0.2s linear"
+  },
+  controlsSection: {
+    visibility: "hidden",
+    opacity: 0,
+    transition: "visibility 0s, opacity 0.2s linear"
+  }
 });
 
 class GridComponent extends React.Component {

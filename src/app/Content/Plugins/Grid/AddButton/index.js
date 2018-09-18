@@ -1,9 +1,9 @@
 import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
+import Tooltip from "@material-ui/core/Tooltip";
 import AddIcon from "@material-ui/icons/Add";
 import classNames from "classnames";
-import Tooltip from "../Tooltip";
 
 const styles = () => ({
   root: {
