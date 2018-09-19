@@ -23,7 +23,7 @@ const styles = () => ({
   grid: {
     overflow: "hidden",
     transition: "all 0.2s ease-out",
-    border: "2px dashed rgba(204, 204, 204, 0)",
+    border: "0px dashed rgba(204, 204, 204, 0)",
     display: "flex",
     "&:hover": {
       border: "2px dashed rgba(204, 204, 204, 1)"
