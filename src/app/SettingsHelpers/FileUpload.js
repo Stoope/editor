@@ -6,6 +6,7 @@ import CloudUpload from "@material-ui/icons/CloudUpload";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Grid from "@material-ui/core/Grid";
 import green from "@material-ui/core/colors/green";
+import red from "@material-ui/core/colors/red";
 import classNames from "classnames";
 
 const styles = () => ({
@@ -16,6 +17,12 @@ const styles = () => ({
     backgroundColor: green[500],
     "&:hover": {
       backgroundColor: green[700]
+    }
+  },
+  errorButton: {
+    backgroundColor: red[500],
+    "&:hover": {
+      backgroundColor: red[700]
     }
   },
   successIcon: {
@@ -35,7 +42,8 @@ const styles = () => ({
 class FileUpload extends React.Component {
   state = {
     loading: false,
-    success: false
+    success: false,
+    error: false
   };
   handleUpload = event => {
     const file = event.target.files[0];
@@ -46,11 +54,21 @@ class FileUpload extends React.Component {
         method: "POST",
         body
       })
-        .then(response => response.json())
+        .then(response => {
+          if (!response.ok) {
+            console.dir(response);
+            throw Error(response.statusText);
+          }
+          return response.json();
+        })
         .then(value => {
-          this.setState({ loading: false, success: true }, () =>
+          this.setState({ loading: false, success: true, error: false }, () =>
             this.handleChange((value && value.url) || "")
           );
+        })
+        .catch(error => {
+          this.setState({ loading: false, success: false, error: true });
+          console.log(error);
         });
     });
   };
@@ -64,9 +82,16 @@ class FileUpload extends React.Component {
     const {
       value,
       label,
-      classes: { marginRight, hidden, progress, successButton, successIcon }
+      classes: {
+        marginRight,
+        hidden,
+        progress,
+        successButton,
+        successIcon,
+        errorButton
+      }
     } = this.props;
-    const { loading, success } = this.state;
+    const { loading, success, error } = this.state;
 
     return (
       <Grid container alignItems="flex-end" item xs={12}>
@@ -86,10 +111,14 @@ class FileUpload extends React.Component {
             <Button
               component="span"
               variant="raised"
-              className={classNames(success && successButton)}
+              className={classNames(
+                success ? successButton : error ? errorButton : null
+              )}
               disabled={loading}
             >
-              <CloudUpload className={classNames(success && successIcon)} />
+              <CloudUpload
+                className={classNames((success || error) && successIcon)}
+              />
               {loading && <CircularProgress size={24} className={progress} />}
             </Button>
           </label>

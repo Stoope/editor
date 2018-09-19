@@ -24,6 +24,11 @@ const GridComponent = ({
   alignItems,
   justifyContent,
   flexDirection,
+  bgImageSrc,
+  backgroundRepeat,
+  backgroundPosition,
+  backgroundAttachment,
+  backgroundSize,
   ...props
 }) => (
   <Grid
@@ -36,7 +41,12 @@ const GridComponent = ({
       paddingRight,
       alignItems,
       justifyContent,
-      flexDirection
+      flexDirection,
+      backgroundImage: `url(${bgImageSrc})`,
+      backgroundRepeat,
+      backgroundPosition,
+      backgroundAttachment,
+      backgroundSize
     }}
     {...props}
   >

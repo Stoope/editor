@@ -1,8 +1,9 @@
-import React from "react";
+import React, { Fragment } from "react";
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
 import ColorPicker from "@/app/SettingsHelpers/ColorPicker";
 import TextField from "@/app/SettingsHelpers/TextField";
+import FileUpload from "@/app/SettingsHelpers/FileUpload";
 import SettingsSidebar from "@/app/SettingsSidebar";
 import MenuItem from "@material-ui/core/MenuItem";
 import Grid from "@material-ui/core/Grid";
@@ -29,7 +30,12 @@ const GridSettings = ({
     paddingBottom,
     paddingLeft,
     paddingRight,
-    flexDirection
+    flexDirection,
+    bgImageSrc,
+    backgroundRepeat,
+    backgroundPosition,
+    backgroundAttachment,
+    backgroundSize
   }
 }) => (
   <SettingsSidebar isOpen={isSettingsOpen} onClose={closeSidebar}>
@@ -40,6 +46,105 @@ const GridSettings = ({
       <Grid item xs={12}>
         <ColorPicker onChange={color => changeItem({ color })} color={color} />
       </Grid>
+      <Grid item xs={12}>
+        <FileUpload
+          label="Url изображения для заднего фона"
+          value={bgImageSrc}
+          onChange={bgImageSrc => changeItem({ bgImageSrc })}
+        />
+      </Grid>
+      {bgImageSrc && (
+        <Fragment>
+          <Grid item xs={12}>
+            <TextField
+              select
+              label="Повтор изображения"
+              value={backgroundRepeat}
+              onChange={backgroundRepeat => changeItem({ backgroundRepeat })}
+            >
+              {[
+                { value: "no-repeat", label: "Не повторять" },
+                { value: "repeat", label: "Повторять" },
+                { value: "repeat-x", label: "Повторять по горизонтали" },
+                { value: "repeat-y", label: "Повторять по вертикали" }
+              ].map(option => (
+                <MenuItem key={option.value} value={option.value}>
+                  {option.label}
+                </MenuItem>
+              ))}
+            </TextField>
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              select
+              label="Повтор изображения"
+              value={backgroundPosition}
+              onChange={backgroundPosition =>
+                changeItem({ backgroundPosition })
+              }
+            >
+              {[
+                { value: "top left", label: "В левом верхнем углу" },
+                { value: "top", label: "По центру вверху" },
+                { value: "right top ", label: "В правом верхнем углу" },
+                { value: "left", label: "По левому краю и по центру" },
+                { value: "center", label: "По центру" },
+                { value: "right", label: "По правому краю и по центру" },
+                { value: "bottom left ", label: "В левом нижнем углу" },
+                { value: "bottom", label: "По центру внизу" },
+                { value: "bottom right", label: "В правом нижнем углу" }
+              ].map(option => (
+                <MenuItem key={option.value} value={option.value}>
+                  {option.label}
+                </MenuItem>
+              ))}
+            </TextField>
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              select
+              label="Поведение изображения при скролле"
+              value={backgroundAttachment}
+              onChange={backgroundAttachment =>
+                changeItem({ backgroundAttachment })
+              }
+            >
+              {[
+                { value: "fixed", label: "Неподвижное" },
+                { value: "scroll", label: "Скроллится вместе с контентом" }
+              ].map(option => (
+                <MenuItem key={option.value} value={option.value}>
+                  {option.label}
+                </MenuItem>
+              ))}
+            </TextField>
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              select
+              label="Масштабирование изображения"
+              value={backgroundSize}
+              onChange={backgroundSize => changeItem({ backgroundSize })}
+            >
+              {[
+                { value: "auto", label: "Автоматически" },
+                {
+                  value: "cover",
+                  label: "Масштабировать на весь задний фон"
+                },
+                {
+                  value: "contain",
+                  label: "Масштабировать с сохранением пропорций"
+                }
+              ].map(option => (
+                <MenuItem key={option.value} value={option.value}>
+                  {option.label}
+                </MenuItem>
+              ))}
+            </TextField>
+          </Grid>
+        </Fragment>
+      )}
       <Grid item xs={12}>
         <TextField
           select
