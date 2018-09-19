@@ -1,19 +1,14 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
-import { ChromePicker } from "react-color";
 import { withStyles } from "@material-ui/core/styles";
+import TextField from "@/app/SettingsHelpers/TextField";
+import { ChromePicker } from "react-color";
 import Popover from "@material-ui/core/Popover";
+import Grid from "@material-ui/core/Grid";
 
 const styles = () => ({
-  textField: {
-    flex: 1,
-    marginRight: 10
-  },
-  root: {
-    display: "flex",
-    alignItems: "flex-end",
-    marginRight: 5
+  marginRight: {
+    marginRight: 4
   }
 });
 
@@ -44,21 +39,20 @@ class ColorPicker extends React.Component {
     const {
       color = "",
       label = "Цвет фона",
-      classes: { root, textField }
+      classes: { marginRight }
     } = this.props;
     const { anchorEl } = this.state;
 
     return (
-      <div className={root}>
-        <TextField
-          label={label}
-          className={textField}
-          value={color}
-          onChange={this.handleChange}
-        />
-        <Button variant="raised" onClick={this.handleClick}>
-          Выбрать ...
-        </Button>
+      <Grid container alignItems="flex-end" item xs={12}>
+        <Grid className={marginRight} item xs>
+          <TextField label={label} value={color} onChange={this.handleChange} />
+        </Grid>
+        <Grid item xs="auto">
+          <Button variant="raised" onClick={this.handleClick}>
+            Выбрать ...
+          </Button>
+        </Grid>
         <Popover
           open={Boolean(anchorEl)}
           anchorEl={anchorEl}
@@ -77,7 +71,7 @@ class ColorPicker extends React.Component {
             onChange={this.handleChangeChromePicker}
           />
         </Popover>
-      </div>
+      </Grid>
     );
   }
 }

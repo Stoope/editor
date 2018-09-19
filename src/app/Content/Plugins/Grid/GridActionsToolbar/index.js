@@ -94,6 +94,7 @@ class GridActionsToolbar extends React.Component {
           innerSettings={innerSettings}
           changeItem={this.changeItem}
           closeSidebar={this.closeSidebar}
+          isSection={isSection}
         />
         <Grid
           spacing={8}

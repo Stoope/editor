@@ -21,6 +21,9 @@ const GridComponent = ({
   paddingTop,
   paddingLeft,
   paddingRight,
+  alignItems,
+  justifyContent,
+  flexDirection,
   ...props
 }) => (
   <Grid
@@ -30,7 +33,10 @@ const GridComponent = ({
       paddingBottom,
       paddingTop,
       paddingLeft,
-      paddingRight
+      paddingRight,
+      alignItems,
+      justifyContent,
+      flexDirection
     }}
     {...props}
   >

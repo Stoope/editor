@@ -8,21 +8,23 @@ import AddButton from "./AddButton";
 import AddButtonInline from "./AddButtonInline";
 
 const styles = () => ({
-  rootHover: {
+  gridBlock: {
     "&:hover $controls": {
       visibility: "visible",
       opacity: 1
     }
   },
-  rootHoverSection: {
+  gridSection: {
     "&:hover $controlsSection": {
       visibility: "visible",
       opacity: 1
     }
   },
   grid: {
+    overflow: "hidden",
     transition: "all 0.2s ease-out",
     border: "2px dashed rgba(204, 204, 204, 0)",
+    display: "flex",
     "&:hover": {
       border: "2px dashed rgba(204, 204, 204, 1)"
     }
@@ -66,8 +68,8 @@ class GridComponent extends React.Component {
       resizeItems,
       innerSettings,
       classes: {
-        rootHoverSection,
-        rootHover,
+        gridSection,
+        gridBlock,
         hiddenBlock,
         grid,
         controls,
@@ -80,7 +82,7 @@ class GridComponent extends React.Component {
     return (
       <View.Component
         {...componentProps}
-        className={classNames(grid, section ? rootHoverSection : rootHover)}
+        className={classNames(grid, section ? gridSection : gridBlock)}
       >
         {isItemHidden ? (
           <Typography className={hiddenBlock} variant="title">

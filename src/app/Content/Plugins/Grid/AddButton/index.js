@@ -10,7 +10,7 @@ const styles = () => ({
     position: "absolute",
     left: 0,
     right: 0,
-    bottom: -20,
+    bottom: 0,
     margin: "0 auto",
     zIndex: 1,
     width: 40

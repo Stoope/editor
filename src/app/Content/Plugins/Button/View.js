@@ -16,7 +16,6 @@ const ViewComponent = ({
   type,
   variant,
   text,
-  borderRadiusType,
   href,
   target,
   disableRipple,
@@ -31,8 +30,6 @@ const ViewComponent = ({
     className={root}
     style={{
       ...rest,
-      borderRadius:
-        borderRadiusType === "%" ? `${rest.borderRadius}%` : rest.borderRadius,
       color: rest.backgroundColor
         ? theme.palette.getContrastText(rest.backgroundColor)
         : "#000"
@@ -51,7 +48,6 @@ export default {
     type: "ButtonPlugin",
     text: "Кнопка",
     variant: "contained",
-    borderRadiusType: "px",
     borderRadius: 10,
     backgroundColor: "#e0e0e0",
     href: "",

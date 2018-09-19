@@ -1,10 +1,9 @@
 import React from "react";
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
-import TextField from "@material-ui/core/TextField";
 import ColorPicker from "@/app/SettingsHelpers/ColorPicker";
+import TextField from "@/app/SettingsHelpers/TextField";
 import SettingsSidebar from "@/app/SettingsSidebar";
-import InputAdornment from "@material-ui/core/InputAdornment";
 import MenuItem from "@material-ui/core/MenuItem";
 import Grid from "@material-ui/core/Grid";
 
@@ -19,16 +18,18 @@ const GridSettings = ({
   closeSidebar,
   changeItem,
   innerSettings,
+  isSection,
   classes: { grid },
   componentProps: {
     color,
     alignItems,
-    justify,
+    justifyContent,
     xs,
     paddingTop,
     paddingBottom,
     paddingLeft,
-    paddingRight
+    paddingRight,
+    flexDirection
   }
 }) => (
   <SettingsSidebar isOpen={isSettingsOpen} onClose={closeSidebar}>
@@ -42,12 +43,13 @@ const GridSettings = ({
       <Grid item xs={12}>
         <TextField
           select
-          fullWidth
           label="Ширина блока"
           value={xs}
-          onChange={event => changeItem({ xs: event.target.value })}
+          onChange={xs => changeItem({ xs })}
         >
           {[
+            { value: "auto", label: "Автоматически" },
+            { value: true, label: "Все доступное пространство" },
             { value: 1, label: "1 колонка" },
             { value: 2, label: "2 колонки" },
             { value: 3, label: "3 колонки" },
@@ -70,10 +72,9 @@ const GridSettings = ({
       <Grid item xs={12}>
         <TextField
           select
-          fullWidth
           label="Выравнивание по вертикали"
           value={alignItems}
-          onChange={event => changeItem({ alignItems: event.target.value })}
+          onChange={alignItems => changeItem({ alignItems })}
         >
           {[
             { value: "flex-start", label: "С начала" },
@@ -91,10 +92,9 @@ const GridSettings = ({
       <Grid item xs={12}>
         <TextField
           select
-          fullWidth
           label="Выравнивание по горизонтали"
-          value={justify}
-          onChange={event => changeItem({ justify: event.target.value })}
+          value={justifyContent}
+          onChange={justifyContent => changeItem({ justifyContent })}
         >
           {[
             { value: "flex-start", label: "С начала" },
@@ -119,60 +119,64 @@ const GridSettings = ({
           ))}
         </TextField>
       </Grid>
+      {isSection && (
+        <Grid item xs={12}>
+          <TextField
+            select
+            label="Расположение блоков"
+            value={flexDirection}
+            onChange={flexDirection => changeItem({ flexDirection })}
+          >
+            {[
+              { value: "row", label: "В строку" },
+              { value: "row-reverse", label: "В строку в обратном порядке" },
+              { value: "column", label: "В колонку" },
+              {
+                value: "column-reverse",
+                label: "В колонку в обратном порядке"
+              }
+            ].map(option => (
+              <MenuItem key={option.value} value={option.value}>
+                {option.label}
+              </MenuItem>
+            ))}
+          </TextField>
+        </Grid>
+      )}
       <Grid item xs={6}>
         <TextField
-          fullWidth
-          InputProps={{
-            endAdornment: <InputAdornment position="end">px</InputAdornment>
-          }}
+          inputAdornmentContent="px"
           label="Отступ сверху"
           type="number"
           value={paddingTop}
-          onChange={event =>
-            changeItem({ paddingTop: +event.target.value || 0 })
-          }
+          onChange={paddingTop => changeItem({ paddingTop })}
         />
       </Grid>
       <Grid item xs={6}>
         <TextField
-          InputProps={{
-            endAdornment: <InputAdornment position="end">px</InputAdornment>
-          }}
-          fullWidth
+          inputAdornmentContent="px"
           label="Отступ снизу"
           type="number"
           value={paddingBottom}
-          onChange={event =>
-            changeItem({ paddingBottom: +event.target.value || 0 })
-          }
+          onChange={paddingBottom => changeItem({ paddingBottom })}
         />
       </Grid>
       <Grid item xs={6}>
         <TextField
-          fullWidth
-          InputProps={{
-            endAdornment: <InputAdornment position="end">px</InputAdornment>
-          }}
+          inputAdornmentContent="px"
           label="Отступ слева"
           type="number"
           value={paddingLeft}
-          onChange={event =>
-            changeItem({ paddingLeft: +event.target.value || 0 })
-          }
+          onChange={paddingLeft => changeItem({ paddingLeft })}
         />
       </Grid>
       <Grid item xs={6}>
         <TextField
-          InputProps={{
-            endAdornment: <InputAdornment position="end">px</InputAdornment>
-          }}
-          fullWidth
+          inputAdornmentContent="px"
           label="Отступ вправа"
           type="number"
           value={paddingRight}
-          onChange={event =>
-            changeItem({ paddingRight: +event.target.value || 0 })
-          }
+          onChange={paddingRight => changeItem({ paddingRight })}
         />
       </Grid>
     </Grid>

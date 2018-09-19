@@ -13,6 +13,7 @@
     "lines-between-class-members": "off",
     "no-shadow": "off",
     "no-nested-ternary": "off",
+    "jsx-a11y/alt-text": "off",
     "no-unused-expressions": "off",
     "react/jsx-wrap-multilines": "off",
     "import/prefer-default-export": "off",

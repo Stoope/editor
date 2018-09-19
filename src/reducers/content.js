@@ -12,139 +12,102 @@ const initialState = {
   content: [
     {
       type: "Grid",
-      id: "nUqvHkjAwETVlk1wMwYGz",
+      id: "GBLai8OjpRl9DPiVZJIcu",
       item: true,
       container: true,
+      alignItems: "stretch",
+      justifyContent: "flex-start",
+      flexDirection: "row",
       xs: 12,
       section: true,
       content: [
         {
           type: "Grid",
-          id: "Tra6yKExlRqQ9~pss~G_W",
+          id: "uwbTyTSCHS9tMCnM76Ce0",
           item: true,
-          container: true,
           alignItems: "center",
-          justify: "center",
+          justifyContent: "center",
+          flexDirection: "row",
           xs: 3,
           content: [
             {
-              type: "TestPlugin",
-              height: 800,
-              uri:
-                "https://cdn.theatlantic.com/assets/media/img/photo/2015/11/images-from-the-2016-sony-world-pho/s01_130921474920553591/main_1500.jpg",
-              id: "~BkjpncjIDsH2GKOfF6~Z"
-            }
-          ]
-        },
-        {
-          type: "Grid",
-          id: "y~AKE9HdjTkm1qm46tCLB",
-          item: true,
-          container: true,
-          alignItems: "center",
-          justify: "center",
-          xs: 2,
-          content: [
-            {
               type: "ButtonPlugin",
-              text: "Открыть СиБиЭс",
+              text: "Кнопка",
               variant: "contained",
-              borderRadiusType: "px",
               borderRadius: 10,
-              backgroundColor: "#0a7ac9",
-              href: "https://cbsmba.com/",
-              target: "_blank",
-              disableRipple: false,
-              fontSize: 30,
-              id: "_uRQKTVRjV3p9KGtQe5cu"
-            }
-          ]
-        },
-        {
-          type: "Grid",
-          id: "Y3jtDw_xny8QK5UITS~Lu",
-          item: true,
-          container: true,
-          alignItems: "center",
-          justify: "center",
-          xs: 3,
-          content: [
-            {
-              type: "TestPlugin",
-              height: 800,
-              uri:
-                "https://cdn.theatlantic.com/assets/media/img/photo/2015/11/images-from-the-2016-sony-world-pho/s01_130921474920553591/main_1500.jpg",
-              id: "ZK3hPlzrJeWIhJpHZiBGx"
-            }
-          ]
-        },
-        {
-          type: "Grid",
-          id: "IV3g1Nm0xnJ0I3l5KJ9gZ",
-          item: true,
-          container: true,
-          alignItems: "flex-end",
-          justify: "flex-start",
-          xs: 4,
-          content: [
-            {
-              type: "ButtonPlugin",
-              text: "Еще кнопка",
-              variant: "flat",
-              borderRadiusType: "%",
-              borderRadius: 50,
-              backgroundColor: "#00ff22",
+              backgroundColor: "#e0e0e0",
               href: "",
               target: "_blank",
               disableRipple: false,
-              fontSize: 20,
-              id: "UHwoPzQG6o3cObd~ZbhTy"
+              fontSize: 16,
+              id: "7NREQBuW7NXSLySViVmqD"
             }
-          ]
-        }
-      ]
-    },
-    {
-      type: "Grid",
-      id: "2S9to3Ad8vmtymZRNDSyM",
-      item: true,
-      container: true,
-      xs: 12,
-      section: true,
-      content: [
+          ],
+          paddingTop: 200,
+          paddingBottom: 200
+        },
         {
           type: "Grid",
-          id: "y_Xha2zEYd1wf7~mV0WFP",
+          id: "9NLUs1_6Udgox~wOPL4j_",
           item: true,
-          container: true,
           alignItems: "center",
-          justify: "center",
-          xs: 6,
+          flexDirection: "row",
+          justifyContent: "center",
+          xs: 3,
           content: [
             {
-              type: "TestPlugin",
-              height: 800,
-              uri:
-                "https://cdn.theatlantic.com/assets/media/img/photo/2015/11/images-from-the-2016-sony-world-pho/s01_130921474920553591/main_1500.jpg",
-              id: "pF69wTVUu_321tfP9DkMP"
+              type: "ImagePlugin",
+              variant: "contained",
+              borderRadius: 0,
+              width: "auto",
+              height: "auto",
+              src:
+                "https://www.elastic.co/assets/bltada7771f270d08f6/enhanced-buzz-1492-1379411828-15.jpg",
+              href: "",
+              target: "_blank",
+              id: "wQflSPVrasypbxyfZ6keE"
             }
           ]
         },
         {
           type: "Grid",
-          id: "Eb8CAxBvqN_bUa0JuuRvL",
+          id: "AawQfi1J2a7av3MSomODk",
           item: true,
-          container: true,
           alignItems: "center",
-          justify: "center",
-          xs: 6,
+          flexDirection: "row",
+          justifyContent: "center",
+          xs: 3,
           content: [
             {
-              type: "TestPlugin",
-              height: 800,
-              uri:
-                "https://cdn.theatlantic.com/assets/media/img/photo/2015/11/images-from-the-2016-sony-world-pho/s01_130921474920553591/main_1500.jpg",
-              id: "uKTRtRlsO7Qp9BysAl6jz"
+              type: "ButtonPlugin",
+              text: "Кнопка",
+              variant: "contained",
+              borderRadius: 10,
+              backgroundColor: "#e0e0e0",
+              href: "",
+              target: "_blank",
+              disableRipple: false,
+              fontSize: 16,
+              id: "JLqM_sstLgZOTWSwXZNfD"
+            }
+          ]
+        },
+        {
+          type: "Grid",
+          id: "NS5PP1o5zeQj9s795m6pK",
+          item: true,
+          alignItems: "center",
+          flexDirection: "row",
+          justifyContent: "center",
+          xs: 3,
+          content: [
+            {
+              type: "ImagePlugin",
+              variant: "contained",
+              borderRadius: 0,
+              href: "",
+              target: "_blank",
+              id: "1ReaFIyTKvz5f9QTNoYgb"
             }
           ]
         }
@@ -154,7 +117,7 @@ const initialState = {
 };
 
 const reducer = (state = initialState, { type, payload }) => {
-  // console.log(JSON.stringify(state));
+  console.log(JSON.stringify(state));
   switch (type) {
     case constants.REMOVE_EDITOR_CONTENT_ITEM:
       return {
