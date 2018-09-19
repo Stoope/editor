@@ -5,13 +5,13 @@ import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
+import Switch from "@material-ui/core/Switch";
 
 const styles = () => ({
   marginRight: {
     marginRight: 4
   },
-  autoCheckbox: {
+  marginLeft: {
     marginLeft: 4
   }
 });
@@ -52,7 +52,7 @@ class SizeField extends React.Component {
     const {
       label,
       autoEnabled,
-      classes: { marginRight, autoCheckbox }
+      classes: { marginRight, marginLeft }
     } = this.props;
     const { type, value, auto } = this.state;
 
@@ -86,10 +86,10 @@ class SizeField extends React.Component {
             </Select>
           </Grid>
           {autoEnabled && (
-            <Grid className={autoCheckbox} item xs="auto">
+            <Grid className={marginLeft} item xs="auto">
               <FormControlLabel
                 control={
-                  <Checkbox
+                  <Switch
                     disableRipple
                     checked={auto}
                     onChange={this.handleAutoChange}
