@@ -63,7 +63,7 @@ class GridActionsToolbar extends React.Component {
   };
   changeItem = props => {
     const { changeItem, id } = this.props;
-    changeItem && changeItem({ id: props.id || id, ...props });
+    changeItem && changeItem({ id, ...props });
   };
   moveItemUp = () => {
     const { moveItemUp, id } = this.props;

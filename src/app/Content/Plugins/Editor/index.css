@@ -1,0 +1,9 @@
+.ql-tooltip {
+  z-index: 1;
+}
+.ql-formats {
+  flex-wrap: wrap;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+}

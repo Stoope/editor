@@ -1,5 +1,5 @@
 import React from "react";
-import { withStyles, withTheme } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles";
 import preview from "./preview.png";
 import image from "./image.png";
 
@@ -37,7 +37,7 @@ const ViewComponent = ({
 );
 
 export default {
-  Component: withStyles(styles)(withTheme()(ViewComponent)),
+  Component: withStyles(styles)(ViewComponent),
   id: "ImagePlugin",
   name: "Изображение",
   description: "Изображение с изменяемым внешнем видом",
