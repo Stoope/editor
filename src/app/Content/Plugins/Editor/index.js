@@ -8,8 +8,10 @@ import View from "./View";
 
 const styles = () => ({
   borderOnHover: {
+    transition: "all 0.2s ease-out",
+    border: "2px dashed rgba(204, 204, 204, 0)",
+    margin: -2,
     "&:hover": {
-      transition: "all 0.2s ease-out",
       border: "2px solid rgba(204, 204, 204, 1)"
     }
   }

@@ -31,7 +31,7 @@ class AddBlockSidebar extends React.Component {
   addBlock = () => {
     const {
       addItemAfter,
-      resizeItems,
+      // resizeItems,
       item: { defaultState },
       closeAddBlockSidebar,
       currentId,
@@ -56,9 +56,9 @@ class AddBlockSidebar extends React.Component {
               : [{ ...defaultState, id: nanoid() }]
           }
         });
-        if (resizeItems != null) {
-          resizeItems(currentId);
-        }
+        // if (resizeItems != null) {
+        //   resizeItems(currentId);
+        // }
       } else if (type === "container") {
         addItemAfter({
           id: currentId,

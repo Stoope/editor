@@ -77,7 +77,7 @@ const GridSettings = ({
           <Grid item xs={12}>
             <TextField
               select
-              label="Повтор изображения"
+              label="Положение изображения"
               value={backgroundPosition}
               onChange={backgroundPosition =>
                 changeItem({ backgroundPosition })

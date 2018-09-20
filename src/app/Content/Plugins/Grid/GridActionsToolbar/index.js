@@ -26,7 +26,7 @@ const styles = () => ({
     right: 15
   },
   rootBlock: {
-    top: 55,
+    top: 25,
     left: 15
   },
   iconSmall: {

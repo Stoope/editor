@@ -6,7 +6,7 @@ import classNames from "classnames";
 const styles = () => ({
   grid: {
     position: "relative",
-    minHeight: 34 + 15 * 2
+    minHeight: 34 + 25 * 2
   }
 });
 
