@@ -1,4 +1,5 @@
 import reducer from "../content";
+import { copyItem } from "../helpers";
 import * as constants from "../../constants";
 
 const initialState = {
@@ -35,6 +36,35 @@ const initialState = {
     }
   ]
 };
+
+describe("content helpers", () => {
+  const item = {
+    type: "Grid",
+    id: "u39b~3_VQ1EJ2m1oFPEWy",
+    item: true,
+    alignItems: "flex-start",
+    flexDirection: "row",
+    justifyContent: "center",
+    xs: 3,
+    content: [
+      {
+        type: "EditorPlugin",
+        width: "100%",
+        height: "auto",
+        value:
+          '<h1><span class="ql-size-huge" style="color: rgb(0, 102, 204);">5 000</span></h1><p><span class="ql-size-large">Обучающихся студентов в год</span></p>',
+        id: "w3P4bOZAt9yNxKYyjeybC"
+      }
+    ],
+    paddingRight: 50
+  };
+  it("should change id", () => {
+    expect(copyItem(item).id).not.toBe(item.id);
+  });
+  it("should change id deep", () => {
+    expect(copyItem(item).content[0].id).not.toBe(item.content[0].id);
+  });
+});
 
 describe("content reducer", () => {
   it("should handle REMOVE_EDITOR_CONTENT_ITEM", () => {
@@ -217,15 +247,7 @@ describe("content reducer", () => {
         {
           content: [
             {
-              id: 4,
-              content: [
-                {
-                  id: 7
-                },
-                {
-                  id: 8
-                }
-              ]
+              content: [{}, {}]
             }
           ]
         },

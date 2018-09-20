@@ -32,6 +32,30 @@ const findItemById = (id, content) => {
   return result;
 };
 
+export const copyItem = content => {
+  if (content && !Array.isArray(content)) {
+    return {
+      ...content,
+      id: nanoid(),
+      content: copyItem(content.content)
+    };
+  }
+  if (Array.isArray(content)) {
+    return content
+      .map(element => copyItem(element))
+      .filter(element => element != null);
+  }
+  if (content && Array.isArray(content.content)) {
+    return {
+      ...content,
+      content: content.content
+        .map(element => copyItem(element))
+        .filter(element => element != null)
+    };
+  }
+  return content;
+};
+
 export const removeItemById = (id, content) => {
   if (content.id === id) {
     return undefined;
@@ -73,8 +97,8 @@ export const copyItemById = (id, content) => {
     const item = content.find(element => element.id === id);
     if (item) {
       const index = content.findIndex(element => element.id === id);
-      return insertInArray(index, { ...item, id: nanoid() }, content).map(
-        element => copyItemById(id, element)
+      return insertInArray(index, copyItem(item), content).map(element =>
+        copyItemById(id, element)
       );
     }
     return content.map(element => copyItemById(id, element));
@@ -85,11 +109,9 @@ export const copyItemById = (id, content) => {
       const index = content.content.findIndex(element => element.id === id);
       return {
         ...content,
-        content: insertInArray(
-          index,
-          { ...item, id: nanoid() },
-          content.content
-        ).map(element => copyItemById(id, element))
+        content: insertInArray(index, copyItem(item), content.content).map(
+          element => copyItemById(id, element)
+        )
       };
     }
     return {
