@@ -13,41 +13,40 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
-        use: [
+        oneOf: [
           {
-            loader: "thread-loader",
+            test: /\.(js|jsx)$/,
+            exclude: /node_modules/,
+            use: [
+              {
+                loader: "thread-loader",
+                options: {
+                  poolTimeout: Infinity
+                }
+              },
+              "babel-loader"
+            ]
+          },
+          {
+            test: /\.css$/,
+            use: ["style-loader", "css-loader"]
+          },
+          {
+            test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
+            loader: "url-loader",
             options: {
-              poolTimeout: Infinity
+              limit: 8192,
+              name: "static/media/[name].[hash:8].[ext]"
             }
           },
-          "babel-loader"
-        ],
-        exclude: /node_modules/
-      },
-      {
-        test: /\.css$/,
-        use: ["style-loader", "css-loader"]
-      },
-      {
-        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
-        use: [
           {
             loader: "file-loader",
+            exclude: [/\.(js|jsx|mjs)$/, /\.html$/, /\.json$/],
             options: {
-              name: "[name].[ext]",
-              outputPath: "static/fonts/"
+              name: "static/media/[name].[hash:8].[ext]"
             }
           }
         ]
-      },
-      {
-        test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
-        loader: "url-loader",
-        options: {
-          limit: 100,
-          name: "static/media/[name].[hash:8].[ext]"
-        }
       }
     ]
   },

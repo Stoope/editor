@@ -96,7 +96,12 @@ class FileUpload extends React.Component {
     return (
       <Grid container alignItems="flex-end" item xs={12}>
         <Grid className={marginRight} item xs>
-          <TextField label={label} value={value} onChange={this.handleChange} />
+          <TextField
+            placeholder="https://example.com"
+            label={label}
+            value={value}
+            onChange={this.handleChange}
+          />
         </Grid>
         <Grid item xs="auto">
           <label htmlFor="flat-button-file">

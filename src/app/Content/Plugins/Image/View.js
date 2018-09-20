@@ -1,18 +1,23 @@
 import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import preview from "./preview.png";
-import image from "./image.png";
+import image from "./image.svg";
 
 const styles = () => ({
   root: {
     transition: `0.2s all`,
     width: "100%",
     height: "100%"
+  },
+  emptyImage: {
+    transition: `0.2s all`,
+    maxWidth: "100%",
+    maxHeight: "100%"
   }
 });
 
 const ViewComponent = ({
-  classes: { root },
+  classes: { root, emptyImage },
   href,
   target,
   src,
@@ -31,7 +36,7 @@ const ViewComponent = ({
         borderRadius
       }}
       src={src || image}
-      className={root}
+      className={src ? root : emptyImage}
     />
   </a>
 );
