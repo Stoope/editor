@@ -3,10 +3,17 @@ import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
 import ColorPicker from "@/app/SettingsHelpers/ColorPicker";
 import TextField from "@/app/SettingsHelpers/TextField";
+import ColumnSize from "@/app/SettingsHelpers/ColumnSize";
 import FileUpload from "@/app/SettingsHelpers/FileUpload";
 import SettingsSidebar from "@/app/SettingsSidebar";
 import MenuItem from "@material-ui/core/MenuItem";
 import Grid from "@material-ui/core/Grid";
+import ExpansionPanel from "@material-ui/core/ExpansionPanel";
+import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
+import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Switch from "@material-ui/core/Switch";
 
 const styles = () => ({
   grid: {
@@ -26,6 +33,10 @@ const GridSettings = ({
     alignItems,
     justifyContent,
     xs,
+    sm,
+    md,
+    lg,
+    xl,
     paddingTop,
     paddingBottom,
     paddingLeft,
@@ -35,7 +46,9 @@ const GridSettings = ({
     backgroundRepeat,
     backgroundPosition,
     backgroundAttachment,
-    backgroundSize
+    backgroundSize,
+    spacing,
+    only = []
   }
 }) => (
   <SettingsSidebar isOpen={isSettingsOpen} onClose={closeSidebar}>
@@ -146,33 +159,150 @@ const GridSettings = ({
         </Fragment>
       )}
       <Grid item xs={12}>
-        <TextField
-          select
-          label="Ширина блока"
-          value={xs}
-          onChange={xs => changeItem({ xs })}
-        >
-          {[
-            { value: "auto", label: "Автоматически" },
-            { value: true, label: "Все доступное пространство" },
-            { value: 1, label: "1 колонка" },
-            { value: 2, label: "2 колонки" },
-            { value: 3, label: "3 колонки" },
-            { value: 4, label: "4 колонки" },
-            { value: 5, label: "5 колонок" },
-            { value: 6, label: "6 колонок" },
-            { value: 7, label: "7 колонок" },
-            { value: 8, label: "8 колонок" },
-            { value: 9, label: "9 колонок" },
-            { value: 10, label: "10 колонок" },
-            { value: 11, label: "11 колонок" },
-            { value: 12, label: "12 колонок" }
-          ].map(option => (
-            <MenuItem key={option.value} value={option.value}>
-              {option.label}
-            </MenuItem>
-          ))}
-        </TextField>
+        <ExpansionPanel>
+          <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+            <Typography>Адаптивная ширина блока</Typography>
+          </ExpansionPanelSummary>
+          <ExpansionPanelDetails>
+            <Grid spacing={8} item container className={grid}>
+              <Grid container spacing={8} alignItems="flex-end" item xs={12}>
+                <Grid item xs>
+                  <ColumnSize
+                    label=">= 0px"
+                    value={xs}
+                    onChange={xs => changeItem({ xs })}
+                  />
+                </Grid>
+                <Grid item xs="auto">
+                  <FormControlLabel
+                    control={
+                      <Switch
+                        checked={only.includes("xs")}
+                        onChange={event =>
+                          changeItem({
+                            only: event.target.checked
+                              ? [...only, "xs"]
+                              : only.filter(item => item !== "xs")
+                          })
+                        }
+                        value="only"
+                      />
+                    }
+                    label="Скрывать"
+                  />
+                </Grid>
+              </Grid>
+              <Grid container spacing={8} alignItems="flex-end" item xs={12}>
+                <Grid item xs>
+                  <ColumnSize
+                    label=">= 600px"
+                    value={sm}
+                    onChange={sm => changeItem({ sm })}
+                  />
+                </Grid>
+                <Grid item xs="auto">
+                  <FormControlLabel
+                    control={
+                      <Switch
+                        checked={only.includes("sm")}
+                        onChange={event =>
+                          changeItem({
+                            only: event.target.checked
+                              ? [...only, "sm"]
+                              : only.filter(item => item !== "sm")
+                          })
+                        }
+                        value="only"
+                      />
+                    }
+                    label="Скрывать"
+                  />
+                </Grid>
+              </Grid>
+              <Grid container spacing={8} alignItems="flex-end" item xs={12}>
+                <Grid item xs>
+                  <ColumnSize
+                    label=">= 960px"
+                    value={md}
+                    onChange={md => changeItem({ md })}
+                  />
+                </Grid>
+                <Grid item xs="auto">
+                  <FormControlLabel
+                    control={
+                      <Switch
+                        checked={only.includes("md")}
+                        onChange={event =>
+                          changeItem({
+                            only: event.target.checked
+                              ? [...only, "md"]
+                              : only.filter(item => item !== "md")
+                          })
+                        }
+                        value="only"
+                      />
+                    }
+                    label="Скрывать"
+                  />
+                </Grid>
+              </Grid>
+              <Grid container spacing={8} alignItems="flex-end" item xs={12}>
+                <Grid item xs>
+                  <ColumnSize
+                    label=">= 1280px"
+                    value={lg}
+                    onChange={lg => changeItem({ lg })}
+                  />
+                </Grid>
+                <Grid item xs="auto">
+                  <FormControlLabel
+                    control={
+                      <Switch
+                        checked={only.includes("lg")}
+                        onChange={event =>
+                          changeItem({
+                            only: event.target.checked
+                              ? [...only, "lg"]
+                              : only.filter(item => item !== "lg")
+                          })
+                        }
+                        value="only"
+                      />
+                    }
+                    label="Скрывать"
+                  />
+                </Grid>
+              </Grid>
+              <Grid container spacing={8} alignItems="flex-end" item xs={12}>
+                <Grid item xs>
+                  <ColumnSize
+                    label=">= 1920px"
+                    value={xl}
+                    onChange={xl => changeItem({ xl })}
+                  />
+                </Grid>
+                <Grid item xs="auto">
+                  <FormControlLabel
+                    control={
+                      <Switch
+                        checked={only.includes("xl")}
+                        onChange={event =>
+                          changeItem({
+                            only: event.target.checked
+                              ? [...only, "xl"]
+                              : only.filter(item => item !== "xl")
+                          })
+                        }
+                        value="only"
+                      />
+                    }
+                    label="Скрывать"
+                  />
+                </Grid>
+              </Grid>
+            </Grid>
+          </ExpansionPanelDetails>
+        </ExpansionPanel>
       </Grid>
       <Grid item xs={12}>
         <TextField
@@ -240,6 +370,29 @@ const GridSettings = ({
                 value: "column-reverse",
                 label: "В колонку в обратном порядке"
               }
+            ].map(option => (
+              <MenuItem key={option.value} value={option.value}>
+                {option.label}
+              </MenuItem>
+            ))}
+          </TextField>
+        </Grid>
+      )}
+      {isSection && (
+        <Grid item xs={12}>
+          <TextField
+            select
+            label="Отступ между блоками"
+            value={spacing}
+            onChange={spacing => changeItem({ spacing })}
+          >
+            {[
+              { value: "0", label: "0px" },
+              { value: "8", label: "8px" },
+              { value: "16", label: "16px" },
+              { value: "24", label: "24px" },
+              { value: "32", label: "32px" },
+              { value: "40", label: "40px" }
             ].map(option => (
               <MenuItem key={option.value} value={option.value}>
                 {option.label}

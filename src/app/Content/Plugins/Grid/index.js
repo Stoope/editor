@@ -5,7 +5,6 @@ import Typography from "@material-ui/core/Typography";
 import View from "./View";
 import GridActionsToolbar from "./GridActionsToolbar";
 import AddButton from "./AddButton";
-import AddButtonInline from "./AddButtonInline";
 
 const styles = () => ({
   gridBlock: {
@@ -82,6 +81,7 @@ class GridComponent extends React.Component {
     return (
       <View.Component
         {...componentProps}
+        only={[]}
         className={classNames(grid, section ? gridSection : gridBlock)}
       >
         {isItemHidden ? (
@@ -109,6 +109,7 @@ class GridComponent extends React.Component {
               openAddBlockSidebar={openAddBlockSidebar}
               id={componentProps.id}
               componentProps={componentProps}
+              isSection
             />
           </Fragment>
         ) : (
@@ -124,11 +125,12 @@ class GridComponent extends React.Component {
               isSection={false}
               {...props}
             />
-            <AddButtonInline
+            <AddButton
               className={section ? controlsSection : controls}
               openAddBlockSidebar={openAddBlockSidebar}
               id={componentProps.id}
               componentProps={componentProps}
+              isSection={false}
             />
           </Fragment>
         )}

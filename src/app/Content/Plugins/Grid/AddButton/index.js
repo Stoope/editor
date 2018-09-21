@@ -8,40 +8,62 @@ import classNames from "classnames";
 const styles = () => ({
   root: {
     position: "absolute",
-    left: 0,
+    width: 40,
+    zIndex: 1
+  },
+  rootBlock: {
     right: 0,
-    bottom: 0,
-    margin: "0 auto",
-    zIndex: 1,
-    width: 40
+    top: "calc(100% / 2 - 20px)"
+  },
+  rootSection: {
+    left: "calc(100% / 2 - 20px)",
+    bottom: 0
   }
 });
 
 class AddButton extends React.Component {
   addBlock = () => {
-    const { openAddBlockSidebar, id } = this.props;
+    const { openAddBlockSidebar, id, isSection } = this.props;
     if (openAddBlockSidebar != null) {
-      openAddBlockSidebar({
-        id,
-        props: {
-          xs: 12
-        },
-        type: "container"
-      });
+      openAddBlockSidebar(
+        isSection
+          ? {
+              id,
+              props: {
+                xs: 6
+              },
+              type: "container"
+            }
+          : {
+              id,
+              props: {
+                xs: 6
+              },
+              type: "item"
+            }
+      );
     }
   };
   render() {
     const {
-      classes: { root },
-      className
+      classes: { root, rootSection, rootBlock },
+      className,
+      isSection
     } = this.props;
+    const buttonColor = isSection ? "default" : "secondary";
     return (
-      <div className={classNames(root, className)}>
+      <div
+        className={classNames(
+          root,
+          className,
+          isSection ? rootSection : rootBlock
+        )}
+      >
         <Tooltip title="Добавить блок">
           <Button
             onClick={this.addBlock}
             variant="fab"
-            color="primary"
+            color={buttonColor}
             mini
             aria-label="Add"
           >

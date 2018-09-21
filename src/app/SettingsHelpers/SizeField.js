@@ -90,7 +90,6 @@ class SizeField extends React.Component {
               <FormControlLabel
                 control={
                   <Switch
-                    disableRipple
                     checked={auto}
                     onChange={this.handleAutoChange}
                     value="auto"

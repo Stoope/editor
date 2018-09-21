@@ -14,6 +14,7 @@ const initialState = {
       type: "Grid",
       id: "GBLai8OjpRl9DPiVZJIcu",
       item: true,
+      only: [],
       container: true,
       alignItems: "stretch",
       justifyContent: "flex-end",
@@ -25,6 +26,7 @@ const initialState = {
           type: "Grid",
           id: "UeeS2pAq3rJ_bxEEGs0XX",
           item: true,
+          only: [],
           alignItems: "center",
           flexDirection: "row",
           justifyContent: "center",
@@ -44,6 +46,7 @@ const initialState = {
         },
         {
           type: "Grid",
+          only: [],
           id: "PTMlW1rEinlWEkKPCrbGe",
           item: true,
           alignItems: "flex-start",
@@ -63,6 +66,7 @@ const initialState = {
         },
         {
           type: "Grid",
+          only: [],
           id: "ba6nbBK7ZUau~EGZrFPnt",
           item: true,
           alignItems: "center",
@@ -83,6 +87,7 @@ const initialState = {
         },
         {
           type: "Grid",
+          only: [],
           id: "jwfme7F8dFcpz3TZy1UDQ",
           item: true,
           alignItems: "center",
@@ -112,6 +117,7 @@ const initialState = {
     },
     {
       type: "Grid",
+      only: [],
       id: "LTi6ixC07ZI9~DrfKFpSu",
       item: true,
       container: true,
@@ -123,6 +129,7 @@ const initialState = {
       content: [
         {
           type: "Grid",
+          only: [],
           id: "UF3lDAt4oYgJo4sFbCIkQ",
           item: true,
           alignItems: "center",
@@ -143,6 +150,7 @@ const initialState = {
         },
         {
           type: "Grid",
+          only: [],
           id: "OtmzL9bJZhIH8~~EMLqbe",
           item: true,
           alignItems: "center",
@@ -174,6 +182,7 @@ const initialState = {
     },
     {
       type: "Grid",
+      only: [],
       id: "NwCPfgS0rCYtmWAoM43D3",
       item: true,
       container: true,
@@ -185,6 +194,7 @@ const initialState = {
       content: [
         {
           type: "Grid",
+          only: [],
           id: "bF3t7yGjvx4T~Ssi_0QG4",
           item: true,
           alignItems: "flex-start",
@@ -205,6 +215,7 @@ const initialState = {
         },
         {
           type: "Grid",
+          only: [],
           id: "u39b~3_VQ1EJ2m1oFPEWy",
           item: true,
           alignItems: "flex-start",
@@ -225,6 +236,7 @@ const initialState = {
         },
         {
           type: "Grid",
+          only: [],
           id: "QltBD2GalGsOtmZV3Od1e",
           item: true,
           alignItems: "flex-start",
@@ -245,6 +257,7 @@ const initialState = {
         },
         {
           type: "Grid",
+          only: [],
           id: "A~uSz86~qTpQVnp_pRvzB",
           item: true,
           alignItems: "flex-start",
@@ -264,6 +277,7 @@ const initialState = {
         },
         {
           type: "Grid",
+          only: [],
           id: "2yNCvwqSKMzhsemWEJxby",
           item: true,
           alignItems: "center",

@@ -45,12 +45,13 @@ class AddBlockSidebar extends React.Component {
           id: currentId,
           content: {
             type: "Grid",
-            id: nanoid(),
+            only: [],
             item: true,
             alignItems: "center",
             flexDirection: "row",
             justifyContent: "center",
             ...props,
+            id: nanoid(),
             content: Array.isArray(defaultState)
               ? defaultState.map(item => ({ ...item, id: nanoid() }))
               : [{ ...defaultState, id: nanoid() }]
@@ -64,6 +65,7 @@ class AddBlockSidebar extends React.Component {
           id: currentId,
           content: {
             type: "Grid",
+            only: [],
             id: nanoid(),
             item: true,
             container: true,
@@ -75,12 +77,13 @@ class AddBlockSidebar extends React.Component {
             content: [
               {
                 type: "Grid",
-                id: nanoid(),
+                only: [],
                 item: true,
                 alignItems: "center",
                 justifyContent: "center",
                 flexDirection: "row",
                 ...props,
+                id: nanoid(),
                 content: Array.isArray(defaultState)
                   ? defaultState.map(item => ({ ...item, id: nanoid() }))
                   : [{ ...defaultState, id: nanoid() }]
